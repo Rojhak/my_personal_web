@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1>Sales Analytics Dashboard</h1>
+        <div class="dashboard-filters">
+            <select id="timeRange">
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="dashboard-grid">
+        <!-- Key Metrics -->
+        <div class="metric-card">
+            <h3>Total Sales</h3>
+            <div class="metric-value">€{{ total_sales }}</div>
+            <div class="metric-trend up">
+                <i class="fas fa-arrow-up"></i> 12%
+            </div>
+        </div>
+        
+        <!-- Charts will be rendered here -->
+        <div id="salesChart" class="chart-container"></div>
+        <div id="productChart" class="chart-container"></div>
+    </div>
+</div>
+
+<!-- Add Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %} 

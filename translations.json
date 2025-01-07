@@ -1,0 +1,653 @@
+{
+    "en": {
+        "title": "Numbers with Heart:\nMy Journey from Actuarial Tables\nto Social Impact.",
+        "subtitle": "Picture an ex-actuary who left risk tables behind to transform social services—and now wields Python, SQL, and AI to tackle real-world challenges. From building e-commerce dashboards to fine-tuning Transformer models, I bring curiosity, empathy, and an unshakeable drive to innovate. If your team needs a data pro who blends finance-savvy, passion for people, and cutting-edge tech to unleash game-changing insights, I'm ready to make that happen. Let's harness data—and human dedication—to create meaningful impact together.",
+        "nav": {
+            "home": "Home",
+            "projects": "Projects",
+            "about": "About"
+        },
+        "profile_image": "profile.png",
+        "social_links": {
+            "linkedin": "https://www.linkedin.com/in/fehmi-dataanalyst",
+            "github": "https://github.com/Rojhak"
+        },
+        "projects": [
+            {
+                "title": "BundesRAG Analytics",
+                "description": "A comprehensive analysis system for German parliamentary speeches (2000-2022), based on Retrieval-Augmented Generation (RAG). This innovative platform combines FAISS vector search, SentenceTransformers, and spaCy to transform parliamentary discourse into actionable insights.",
+                "image": "bundestag.png",
+                "link": "https://github.com/Rojhak/BundesRAG-Analytics",
+                "type": "github",
+                "features": [
+                    "🔍 Semantic Search: Context-aware search using FAISS and SentenceTransformers",
+                    "📊 Real-time Analytics: Dynamic visualization of political trends",
+                    "🎯 Topic Tracking: AI-powered analysis of topic evolution",
+                    "🔄 RAG Pipeline: Intelligent context extraction",
+                    "🌐 Multilingual Support: German and English",
+                    "📈 Interactive Dashboard: Real-time data exploration",
+                    "👥 Speaker Analysis: Contributions and topics by representatives",
+                    "📂 Advanced Topic Clustering: Automated grouping of semantically similar topics",
+                    "📑 Legal & Statistical Extraction: Identifies legal references and quantitative data"
+                ],
+                "tech_stack": [
+                    "Python",
+                    "Streamlit",
+                    "Hugging Face",
+                    "FAISS",
+                    "spaCy",
+                    "SentenceTransformers",
+                    "JSON",
+                    "Plotly",
+                    "LangChain"
+                ]
+            },
+            {
+                "title": "Bitcoin Analysis System",
+                "description": "Development of an automated system using AWS Lambda functions for Bitcoin price tracking, news collection, and sentiment analysis with Hugging Face LLMs. Includes real-time data pipeline with PostgreSQL integration.",
+                "image": "aws.png",
+                "link": "https://github.com/Rojhak/bitcoin-analysis-aws_lambda-api-llm",
+                "type": "github",
+                "features": [
+                    "Automated data pipeline for Bitcoin price tracking",
+                    "News collection with sentiment analysis",
+                    "AWS Lambda serverless architecture",
+                    "Railway PostgreSQL database integration",
+                    "Hugging Face Transformers for NLP"
+                ],
+                "tech_stack": [
+                    "AWS Lambda",
+                    "Python 3.10",
+                    "PostgreSQL",
+                    "Hugging Face API",
+                    "Web Scraping"
+                ]
+            },
+            {
+                "title": "Sales Analytics Dashboard",
+                "description": "Interactive Tableau dashboard providing comprehensive sales analysis with dynamic filtering and real-time visualization capabilities.",
+                "image": "tablaeu.png",
+                "type": "tableau",
+                "embed_url": "https://public.tableau.com/views/BAProject_dasboard/SalesDashboard?:showVizHome=no&:embed=true",
+                "features": [
+                    "Dynamic sales metrics visualization",
+                    "Interactive filtering options",
+                    "Real-time data updates",
+                    "Multi-dimensional analysis"
+                ],
+                "metrics": [
+                    {
+                        "value": "1M+",
+                        "label": "Data Points"
+                    },
+                    {
+                        "value": "30%",
+                        "label": "Faster Processing"
+                    }
+                ],
+                "tech_tags": [
+                    {
+                        "name": "Tableau",
+                        "type": "data"
+                    },
+                    {
+                        "name": "Python",
+                        "type": "tech"
+                    },
+                    {
+                        "name": "Real-time Data",
+                        "type": "feature"
+                    }
+                ]
+            },
+            {
+                "title": "Project Presentations",
+                "description": "Collection of detailed project presentations and technical documentation.",
+                "type": "slides",
+                "features": [
+                    "Technical implementation details",
+                    "Data analysis methodologies",
+                    "Machine learning approaches"
+                ],
+                "slides": [
+                    {
+                        "name": "BundesRAG Analytics",
+                        "description": "Technical deep dive into the RAG implementation",
+                        "url": "/static/presentations/bundesrag.pdf"
+                    },
+                    {
+                        "name": "Bitcoin Analysis System",
+                        "description": "AWS Lambda architecture and implementation",
+                        "url": "/static/presentations/bitcoin.pdf"
+                    },
+                    {
+                        "name": "Sales Dashboard",
+                        "description": "Data visualization and analytics approach",
+                        "url": "/static/presentations/sales.pdf"
+                    }
+                ]
+            },
+            {
+                "title": "Personal Portfolio Website",
+                "description": "A modern, responsive portfolio website built with Flask and Python, featuring multilingual support, dynamic content management, and interactive project showcases. Implements best practices in web development and UX design.",
+                "image": "fk_log.png",
+                "link": "https://github.com/Rojhak/my_personal_web",
+                "type": "github",
+                "features": [
+                    "Multilingual support (English & German)",
+                    "Responsive design with modern UI/UX",
+                    "Dynamic project showcase with filtering",
+                    "Interactive presentations viewer",
+                    "Optimized performance and SEO"
+                ],
+                "tech_stack": [
+                    "Python",
+                    "Flask",
+                    "HTML5/CSS3",
+                    "JavaScript",
+                    "Jinja2",
+                    "Heroku"
+                ]
+            }
+        ],
+        "about": {
+            "name": "FEHMI KATAR",
+            "title": "Data Analyst",
+            "location": "Berlin, Germany",
+            "expertise": "Results-driven Data Analyst with over seven years of leadership experience and a strong foundation in risk management.",
+            "skills": {
+                "Python": "Data manipulation, machine learning, and web development using libraries like Pandas, Spacy, NumPy, Scikit-learn, and Flask.",
+                "Web Development": "Flask web framework, HTML5, CSS3, JavaScript, Jinja2 templating, responsive design.",
+                "SQL": "Data querying, database management, complex joins; proficient in writing optimized queries.",
+                "Tableau": "Data visualization, dashboard creation, and storytelling with data; experienced in creating interactive dashboards.",
+                "Git": "Collaboration on code projects, version control, and workflow management using Git and GitHub.",
+                "AI & NLP": "AI tools like Transformers and Hugging Face for NLP tasks, including text classification, sentiment analysis, and model fine-tuning.",
+                "Cloud & Deployment": "AWS Lambda, Railway, Streamlit, Heroku; experienced in deploying and maintaining web applications.",
+                "Development Tools": "VS Code, PyCharm, Git, Docker basics, command-line tools."
+            },
+            "experience": [
+                {
+                    "title": "Data-Driven Asylum Rights Management",
+                    "company": "Yekmal e.V. Berlin, Germany",
+                    "period": "04/2016-12/2023",
+                    "details": [
+                        "Co-founded and led an asylum and residence rights department",
+                        "Collected, analyzed, and presented data on clients, court decisions, immigration statistics",
+                        "Implemented data-driven strategies to improve consulting services"
+                    ]
+                }
+            ],
+            "education": [
+                {
+                    "logo": "logos/marmara-logo.png",
+                    "institution": "Marmara University",
+                    "degree": "Advanced Data Analytics & Machine Learning - Immersive Course",
+                    "school": "Code Academy Berlin",
+                    "period": "07/2024 - 12/2024"
+                },
+                {
+                    "logo": "logos/42-berlin-logo.png",
+                    "institution": "42 Berlin",
+                    "degree": "Intensive Coding Program: Piscine & Full Cycle",
+                    "school": "42 Berlin",
+                    "period": "03/2024 - 07/2024"
+                },
+                {
+                    "degree": "Practical Research in Social Work and Early Education M.A.",
+                    "school": "Alice Salomon Hochschule Berlin, Germany",
+                    "period": "04/2017 - 05/2020"
+                },
+                {
+                    "degree": "Bachelor of Arts in Social Work",
+                    "school": "Alice Salomon Hochschule Berlin, Germany",
+                    "period": "04/2013 - 03/2017"
+                },
+                {
+                    "degree": "Bachelor of Science in Actuarial Science",
+                    "school": "Marmara University-Istanbul, Turkey",
+                    "period": "03/2004 - 08/2008"
+                }
+            ],
+            "certifications": [
+                {
+                    "name": "Data Science & Machine Learning Training",
+                    "issuer": "Code Academy Berlin",
+                    "year": "2024",
+                    "period": "07/2024 - 12/2024",
+                    "description": "5-Month Full-Time Program | 840 Hours | Real-World Applications",
+                    "details": [
+                        "Gained more practical coding experience than most university-level programs, focusing on real-world problem-solving",
+                        "Worked in a collaborative, agile environment using SCRUM methodology",
+                        "Completed 6 real-world projects demonstrating practical solution delivery"
+                    ],
+                    "technical_skills": [
+                        "Python Programming: Advanced data analysis with Pandas, NumPy, and Matplotlib",
+                        "SQL Mastery: Database management and optimized query design",
+                        "Machine Learning: Classification, regression, and clustering models",
+                        "Data Visualization: Interactive dashboards with Tableau, Seaborn",
+                        "Deep Learning & NLP: Neural networks and natural language processing",
+                        "RAG: AI-powered semantic search and context-aware retrieval"
+                    ],
+                    "projects": [
+                        "E-Commerce Sales Analysis",
+                        "Time Series Forecasting",
+                        "Automated Data Pipelines",
+                        "BundesRAG-Analytics"
+                    ],
+                    "achievements": [
+                        "Developed robust scripts for data analysis and automation",
+                        "Designed and optimized advanced database queries",
+                        "Built and deployed various machine learning models",
+                        "Created interactive dashboards for data visualization",
+                        "Implemented NLP models for unstructured data analysis"
+                    ]
+                },
+                {
+                    "name": "Google Data Analytics Professional Certificate",
+                    "issuer": "Google",
+                    "year": "2023",
+                    "period": "March 2023",
+                    "description": "Comprehensive professional certification in data analytics",
+                    "details": [
+                        "Foundations: Data, Data, Everywhere",
+                        "Ask Questions to Make Data-Driven Decisions",
+                        "Prepare Data for Exploration",
+                        "Process Data from Dirty to Clean",
+                        "Analyze Data to Answer Questions",
+                        "Share Data Through the Art of Visualization",
+                        "Data Analysis with R Programming",
+                        "Google Data Analytics Capstone: Complete a Case Study"
+                    ],
+                    "achievements": [
+                        "Mastered tools including spreadsheets, SQL, Tableau, and R",
+                        "Developed competencies in data preparation, processing, analysis, and visualization",
+                        "Completed hands-on, practice-based assessments across eight comprehensive courses"
+                    ]
+                },
+                {
+                    "name": "Data Science with Python",
+                    "issuer": "SkillUP by Simplilearn",
+                    "year": "2023",
+                    "period": "March 2023",
+                    "description": "Comprehensive data science program with hands-on learning and industry projects",
+                    "details": [
+                        "Blended learning with interactive Jupyter notebooks labs",
+                        "Assisted practices and lesson-wise knowledge checks",
+                        "Industry-based projects for experiential learning",
+                        "Dedicated live sessions by faculty of industry experts"
+                    ],
+                    "skills_covered": [
+                        "Data wrangling and visualization",
+                        "Web scraping and Python programming concepts",
+                        "ScikitLearn package for Natural Language Processing",
+                        "Data exploration and Mathematical computing",
+                        "Hypothesis building",
+                        "NumPy and SciPy package implementation"
+                    ],
+                    "achievements": [
+                        "Completed hands-on projects using real-world datasets",
+                        "Mastered essential data science libraries and tools",
+                        "Developed proficiency in data manipulation and analysis",
+                        "Lifetime access to self-paced learning content"
+                    ]
+                }
+            ],
+            "interests": [
+                {
+                    "activity": "Football",
+                    "description": "Still actively playing in amateur league in Berlin"
+                },
+                {
+                    "activity": "Cycling",
+                    "description": "Explored 15 countries by bike"
+                }
+            ],
+            "languages": [
+                {
+                    "language": "German",
+                    "level": "C2",
+                    "description": "Professional working proficiency"
+                },
+                {
+                    "language": "English",
+                    "level": "C1",
+                    "description": "Advanced professional proficiency"
+                },
+                {
+                    "language": "Turkish",
+                    "level": "Native",
+                    "description": "Mother tongue"
+                },
+                {
+                    "language": "Kurdish",
+                    "level": "Native",
+                    "description": "Mother tongue"
+                }
+            ]
+        },
+        "projects_title": "My Projects"
+    },
+    "de": {
+        "title": "Von Versicherungsmathematik zu sozialer Wirkung:\n Daten, die den Unterschied machen",
+        "subtitle": "Meine Reise begann bei der Welt der Versicherungstabellen, wo ich Risiken und Wahrscheinlichkeiten analysierte. Doch mein Wunsch, etwas Sinnstiftendes zu bewirken, führte mich in die soziale Arbeit, wo ich Menschen in schwierigen Lebenssituationen unterstützte. Heute verbinde ich diese beiden Welten – mit einem tiefen Verständnis für Daten und einem starken Fokus auf soziale Wirkung. Von der Entwicklung von E-Commerce-Dashboards bis hin zur Feinabstimmung von Transformer-Modellen: Ich bringe analytisches Denken, Empathie und einen unstillbaren Innovationsdrang mit. Daten sind für mich nicht nur Zahlen, sondern Geschichten – mit der Kraft, positive Veränderungen zu bewirken. Wenn Sie nach jemandem suchen, der Finanzwissen, Menschlichkeit und Spitzentechnologie vereint, um Ihre Herausforderungen zu lösen, freue ich mich darauf, gemeinsam mit Ihnen diese Vision umzusetzen. Lassen Sie uns Daten nutzen, um echte und nachhaltige Veränderungen zu schaffen",
+        "nav": {
+            "home": "Startseite",
+            "projects": "Projekte",
+            "about": "Über mich"
+        },
+        "profile_image": "profile.png",
+        "social_links": {
+            "linkedin": "https://www.linkedin.com/in/fehmi-dataanalyst",
+            "github": "https://github.com/Rojhak"
+        },
+        "projects": [
+            {
+                "title": "BundesRAG Analytics",
+                "description": "Ein umfassendes Analysesystem für deutsche Parlamentsreden (2000-2022), basierend auf Retrieval-Augmented Generation (RAG). Diese innovative Plattform kombiniert FAISS-Vektorsuche, SentenceTransformers und spaCy, um parlamentarische Diskurse in verwertbare Erkenntnisse umzuwandeln.",
+                "image": "bundestag.png",
+                "link": "https://github.com/Rojhak/BundesRAG-Analytics",
+                "type": "github",
+                "features": [
+                    "🔍 Semantische Suche: Kontextbewusste Suche mit FAISS und SentenceTransformers",
+                    "📊 Echtzeit-Analytik: Dynamische Visualisierung politischer Trends",
+                    "🎯 Themen-Tracking: KI-gestützte Analyse der Themenentwicklung",
+                    "🔄 RAG-Pipeline: Intelligente Kontextextraktion",
+                    "🌐 Mehrsprachige Unterstützung: Deutsch und Englisch",
+                    "📈 Interaktives Dashboard: Echtzeit-Datenexploration",
+                    "👥 Redner-Analyse: Beiträge und Themen der Abgeordneten",
+                    "📂 Fortgeschrittenes Topic Clustering: Automatisierte Gruppierung semantisch ähnlicher Themen",
+                    "📑 Rechts- & Statistikextraktion: Identifiziert juristische Referenzen und quantitative Daten"
+                ],
+                "tech_stack": [
+                    "Python",
+                    "Streamlit",
+                    "Hugging Face",
+                    "FAISS",
+                    "spaCy",
+                    "SentenceTransformers",
+                    "JSON",
+                    "Plotly",
+                    "LangChain"
+                ]
+            },
+            {
+                "title": "Bitcoin Analyse System",
+                "description": "Entwicklung eines automatisierten Systems mit AWS Lambda-Funktionen zur Verfolgung von Bitcoin-Preisen, Nachrichtensammlung und Stimmungsanalyse mit Hugging Face LLMs. Inklusive Echtzeit-Datenpipeline mit PostgreSQL-Integration.",
+                "image": "aws.png",
+                "link": "https://github.com/Rojhak/bitcoin-analysis-aws_lambda-api-llm",
+                "type": "github",
+                "features": [
+                    "Automatisierte Datenpipeline für Bitcoin-Preisverfolgung",
+                    "Nachrichtensammlung mit Stimmungsanalyse",
+                    "AWS Lambda serverlose Architektur",
+                    "Railway PostgreSQL Datenbankintegration",
+                    "Hugging Face Transformers für NLP"
+                ],
+                "tech_stack": [
+                    "AWS Lambda",
+                    "Python 3.10",
+                    "PostgreSQL",
+                    "Hugging Face API",
+                    "Web Scraping"
+                ]
+            },
+            {
+                "title": "Verkaufsanalyse Dashboard",
+                "description": "Interaktives Tableau-Dashboard für umfassende Verkaufsanalysen mit dynamischer Filterung und Echtzeitvisualisierung.",
+                "image": "tablaeu.png",
+                "link": "https://public.tableau.com/app/profile/fehmi.katar/viz/BAProject_dasboard/SalesDashboard",
+                "type": "tableau",
+                "embed_url": "https://public.tableau.com/views/BAProject_dasboard/SalesDashboard?:showVizHome=no&:embed=true",
+                "features": [
+                    "Dynamische Verkaufsmetriken-Visualisierung",
+                    "Interaktive Filtermöglichkeiten",
+                    "Echtzeit-Datenaktualisierung",
+                    "Mehrdimensionale Analyse"
+                ],
+                "metrics": [
+                    {
+                        "value": "1M+",
+                        "label": "Data Points"
+                    },
+                    {
+                        "value": "30%",
+                        "label": "Faster Processing"
+                    }
+                ],
+                "tech_tags": [
+                    {
+                        "name": "Tableau",
+                        "type": "data"
+                    },
+                    {
+                        "name": "Python",
+                        "type": "tech"
+                    },
+                    {
+                        "name": "Real-time Data",
+                        "type": "feature"
+                    }
+                ]
+            },
+            {
+                "title": "Projekt Präsentationen",
+                "description": "Sammlung detaillierter Projektpräsentationen und technischer Dokumentationen zu verschiedenen Datenanalysen und Machine-Learning-Implementierungen.",
+                "image": "slides.png",
+                "link": "/project_slides",
+                "type": "slides",
+                "features": [
+                    "Umfassende Projektdokumentation",
+                    "Technische Implementierungsdetails",
+                    "Datenanalyse-Methodologien",
+                    "Machine-Learning-Ansätze",
+                    "Visuelle Ergebnisse und Erkenntnisse"
+                ],
+                "tech_stack": [
+                    "Python",
+                    "Machine Learning",
+                    "Datenanalyse",
+                    "Visualisierung",
+                    "Dokumentation"
+                ]
+            },
+            {
+                "title": "Persönliche Portfolio-Website",
+                "description": "Eine moderne, responsive Portfolio-Website, entwickelt mit Flask und Python, mit mehrsprachiger Unterstützung, dynamischer Inhaltsverwaltung und interaktiver Projektpräsentation. Implementiert Best Practices in Webentwicklung und UX-Design.",
+                "image": "fk_log.png",
+                "link": "https://github.com/Rojhak/my_personal_web",
+                "type": "github",
+                "features": [
+                    "Mehrsprachige Unterstützung (Englisch & Deutsch)",
+                    "Responsives Design mit moderner UI/UX",
+                    "Dynamische Projektpräsentation mit Filterung",
+                    "Interaktiver Präsentations-Viewer",
+                    "Optimierte Leistung und SEO"
+                ],
+                "tech_stack": [
+                    "Python",
+                    "Flask",
+                    "HTML5/CSS3",
+                    "JavaScript",
+                    "Jinja2",
+                    "Heroku"
+                ]
+            }
+        ],
+        "about": {
+            "name": "FEHMI KATAR",
+            "title": "Data Analyst",
+            "location": "Berlin, Deutschland",
+            "expertise": "Ergebnisorientierter Data Analyst mit über sieben Jahren Führungserfahrung und fundiertem Hintergrund im Risikomanagement.",
+            "skills": {
+                "Python": "Datenmanipulation, maschinelles Lernen und Webentwicklung mit Bibliotheken wie Pandas, Spacy, NumPy, Scikit-learn und Flask.",
+                "Webentwicklung": "Flask Web-Framework, HTML5, CSS3, JavaScript, Jinja2-Templates, responsives Design.",
+                "SQL": "Datenabfragen, Datenbankmanagement, komplexe Joins; versiert in der Erstellung optimierter Abfragen.",
+                "Tableau": "Datenvisualisierung, Dashboard-Erstellung und Storytelling mit Daten; erfahren in der Erstellung interaktiver Dashboards.",
+                "Git": "Zusammenarbeit an Code-Projekten, Versionskontrolle und Workflow-Management mit Git und GitHub.",
+                "KI & NLP": "KI-Tools wie Transformers und Hugging Face für NLP-Aufgaben, einschließlich Textklassifizierung, Stimmungsanalyse und Modell-Feinabstimmung.",
+                "Cloud & Deployment": "AWS Lambda, Railway, Streamlit, Heroku; erfahren in der Bereitstellung und Wartung von Webanwendungen.",
+                "Entwicklungstools": "VS Code, PyCharm, Git, Docker-Grundlagen, Kommandozeilen-Tools."
+            },
+            "experience": [
+                {
+                    "title": "Datengesteuerte Asylrechtsberatung",
+                    "company": "Yekmal e.V. Berlin, Deutschland",
+                    "period": "04/2016-12/2023",
+                    "details": [
+                        "Mitbegründung und Leitung einer Asyl- und Aufenthaltsrechtsabteilung",
+                        "Sammlung, Analyse und Präsentation von Daten zu Klienten, Gerichtsentscheidungen und Migrationsstatistiken",
+                        "Implementierung datengesteuerter Strategien zur Verbesserung der Beratungsleistungen"
+                    ]
+                }
+            ],
+            "education": [
+                {
+                    "logo": "logos/marmara-logo.png",
+                    "institution": "Marmara University",
+                    "degree": "Advanced Data Analytics & Machine Learning - Intensivkurs",
+                    "school": "Code Academy Berlin",
+                    "period": "07/2024 - 12/2024"
+                },
+                {
+                    "logo": "logos/42-berlin-logo.png",
+                    "institution": "42 Berlin",
+                    "degree": "Intensives Coding Programm: Piscine & Full Cycle",
+                    "school": "42 Berlin",
+                    "period": "03/2024 - 07/2024"
+                },
+                {
+                    "degree": "Masterstudiengang Praxisforschung in Sozialer Arbeit und Pädagogik",
+                    "school": "Alice Salomon Hochschule Berlin",
+                    "period": "04/2017 - 05/2020"
+                },
+                {
+                    "degree": "Bachelor of Arts in Sozialer Arbeit",
+                    "school": "Alice Salomon Hochschule Berlin",
+                    "period": "04/2013 - 03/2017"
+                },
+                {
+                    "degree": "Bachelor of Science in Versicherungsmathematik",
+                    "school": "Marmara Universität-Istanbul, Türkei",
+                    "period": "03/2004 - 08/2008"
+                }
+            ],
+            "certifications": [
+                {
+                    "name": "Data Science & Machine Learning Training",
+                    "issuer": "Code Academy Berlin",
+                    "year": "2024",
+                    "period": "07/2024 - 12/2024",
+                    "description": "5-Monatiges Vollzeit-Programm | 840 Stunden | Praxisanwendungen",
+                    "details": [
+                        "Mehr praktische Programmiererfahrung als in den meisten Universitätsprogrammen, fokussiert auf reale Problemlösungen",
+                        "Arbeit in kollaborativer, agiler Umgebung mit SCRUM-Methodik",
+                        "Abschluss von 6 Praxisprojekten mit nachweisbaren Lösungen"
+                    ],
+                    "technical_skills": [
+                        "Python-Programmierung: Fortgeschrittene Datenanalyse mit Pandas, NumPy und Matplotlib",
+                        "SQL-Beherrschung: Datenbankmanagement und optimierte Abfragen",
+                        "Machine Learning: Klassifikation, Regression und Clustering-Modelle",
+                        "Datenvisualisierung: Interaktive Dashboards mit Tableau, Seaborn",
+                        "Deep Learning & NLP: Neuronale Netze und Verarbeitung natürlicher Sprache",
+                        "RAG: KI-gestützte semantische Suche und kontextbewusster Abruf"
+                    ],
+                    "projects": [
+                        "E-Commerce Verkaufsanalyse",
+                        "Zeitreihenprognose",
+                        "Automatisierte Datenpipelines",
+                        "BundesRAG-Analytics"
+                    ],
+                    "achievements": [
+                        "Entwicklung robuster Skripte für Datenanalyse und Automatisierung",
+                        "Design und Optimierung fortgeschrittener Datenbankabfragen",
+                        "Aufbau und Deployment verschiedener Machine-Learning-Modelle",
+                        "Erstellung interaktiver Dashboards zur Datenvisualisierung",
+                        "Implementierung von NLP-Modellen für unstrukturierte Daten"
+                    ]
+                },
+                {
+                    "name": "Google Data Analytics Professional Certificate",
+                    "issuer": "Google",
+                    "year": "2023",
+                    "period": "März 2023",
+                    "description": "Umfassende professionelle Zertifizierung in Datenanalyse",
+                    "details": [
+                        "Grundlagen: Daten, Daten, Überall",
+                        "Fragen stellen für datengesteuerte Entscheidungen",
+                        "Daten für die Exploration vorbereiten",
+                        "Datenbereinigung und -aufbereitung",
+                        "Datenanalyse zur Beantwortung von Fragen",
+                        "Datenvisualisierung als Kunst der Präsentation",
+                        "Datenanalyse mit R-Programmierung",
+                        "Google Data Analytics Abschlussprojekt: Durchführung einer Fallstudie"
+                    ],
+                    "achievements": [
+                        "Beherrschung von Tools wie Tabellenkalkulationen, SQL, Tableau und R",
+                        "Entwicklung von Kompetenzen in Datenvorbereitung, -verarbeitung, -analyse und -visualisierung",
+                        "Abschluss praxisbasierter Bewertungen in acht umfassenden Kursen"
+                    ]
+                },
+                {
+                    "name": "Data Science mit Python",
+                    "issuer": "SkillUP by Simplilearn",
+                    "year": "2023",
+                    "period": "März 2023",
+                    "description": "Umfassendes Data-Science-Programm mit praktischem Lernen und Industrieprojekten",
+                    "details": [
+                        "Kombiniertes Lernen mit interaktiven Jupyter-Notebooks-Labs",
+                        "Betreute Übungen und lektionsweise Wissensüberprüfungen",
+                        "Industriebasierte Projekte für erfahrungsbasiertes Lernen",
+                        "Dedizierte Live-Sessions durch Fachdozenten aus der Industrie"
+                    ],
+                    "skills_covered": [
+                        "Datenaufbereitung und -visualisierung",
+                        "Web Scraping und Python-Programmierkonzepte",
+                        "ScikitLearn-Paket für Natural Language Processing",
+                        "Datenexploration und mathematische Berechnungen",
+                        "Hypothesenbildung",
+                        "NumPy- und SciPy-Paket-Implementierung"
+                    ],
+                    "achievements": [
+                        "Abgeschlossene praktische Projekte mit realen Datensätzen",
+                        "Beherrschung essentieller Data-Science-Bibliotheken und Tools",
+                        "Entwickelte Kompetenz in Datenmanipulation und -analyse",
+                        "Lebenslanger Zugang zu selbstgesteuertem Lerninhalt"
+                    ]
+                }
+            ],
+            "interests": [
+                {
+                    "activity": "Fußball",
+                    "description": "Aktiver Spieler in der Berliner Amateurliga"
+                },
+                {
+                    "activity": "Radfahren",
+                    "description": "15 Länder mit dem Fahrrad erkundet"
+                }
+            ],
+            "languages": [
+                {
+                    "language": "Deutsch",
+                    "level": "C2",
+                    "description": "Verhandlungssicher"
+                },
+                {
+                    "language": "Englisch",
+                    "level": "C1",
+                    "description": "Fließend in Wort und Schrift"
+                },
+                {
+                    "language": "Türkisch",
+                    "level": "Muttersprache",
+                    "description": "Muttersprachler"
+                },
+                {
+                    "language": "Kurdisch",
+                    "level": "Muttersprache",
+                    "description": "Muttersprachler"
+                }
+            ]
+        },
+        "projects_title": "Meine Projekte"
+    }
+} 

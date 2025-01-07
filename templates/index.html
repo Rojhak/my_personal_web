@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero-container">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1 class="headline">Numbers with Heart:<br>My Journey from Actuarial Tables<br>to Social Impact.</h1>
+            <p class="subheadline">Picture an ex-actuary who left risk tables behind to transform social services—and now wields Python, SQL, and AI to tackle real-world challenges. From building e-commerce dashboards to fine-tuning Transformer models, I bring curiosity, empathy, and an unshakeable drive to innovate. If your team needs a data pro who blends finance-savvy, passion for people, and cutting-edge tech to unleash game-changing insights, I'm ready to make that happen. Let's harness data—and human dedication—to create meaningful impact together.</p>
+            <div class="cta-group">
+                <a href="/static/files/resume.pdf" class="cta-button primary" download>
+                    <div class="cta-content">
+                        <i class="fas fa-download"></i>
+                        <span>Download<br>Resume</span>
+                    </div>
+                </a>
+                <a href="{{ url_for('projects', lang=lang) }}" class="cta-button secondary">
+                    <div class="cta-content">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Explore<br>Projects</span>
+                    </div>
+                </a>
+                <a href="#contact" class="cta-button tertiary">
+                    <div class="cta-content">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact<br>Me</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="data-visualization">
+                <!-- Add an SVG or canvas element for dynamic data visualization -->
+                <div class="network-graph"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+// Add simple network visualization using D3.js
+const createNetworkGraph = () => {
+    const width = 500;
+    const height = 400;
+    
+    const svg = d3.select('.network-graph')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height);
+    
+    // Create nodes and links for visualization
+    const nodes = Array.from({length: 20}, (_, i) => ({id: i}));
+    const links = nodes.slice(1).map(n => ({
+        source: Math.floor(Math.random() * n.id),
+        target: n.id
+    }));
+    
+    const simulation = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(links))
+        .force('charge', d3.forceManyBody().strength(-50))
+        .force('center', d3.forceCenter(width / 2, height / 2));
+    
+    const link = svg.append('g')
+        .selectAll('line')
+        .data(links)
+        .join('line')
+        .style('stroke', '#ddd')
+        .style('stroke-opacity', 0.6);
+    
+    const node = svg.append('g')
+        .selectAll('circle')
+        .data(nodes)
+        .join('circle')
+        .attr('r', 3)
+        .style('fill', '#007bff');
+    
+    simulation.on('tick', () => {
+        link
+            .attr('x1', d => d.source.x)
+            .attr('y1', d => d.source.y)
+            .attr('x2', d => d.target.x)
+            .attr('y2', d => d.target.y);
+        
+        node
+            .attr('cx', d => d.x)
+            .attr('cy', d => d.y);
+    });
+};
+
+document.addEventListener('DOMContentLoaded', createNetworkGraph);
+</script>
+{% endblock %}
