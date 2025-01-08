@@ -2250,13 +2250,6 @@
 
 /* Project Image */
 .project-card[data-type="tableau"] .project-image img {
-    width: 100%;
-    height: 300%;
-    object-fit: cover; /* Cover the entire container */
-}
-
-/* Specific styles for project images */
-.project-card .project-image img {
     width: 100% !important;
     height: auto !important;
     object-fit: contain !important;
@@ -2552,4 +2545,128 @@
     background: var(--accent-color);
     margin: 2rem 0;
     opacity: 0.5;
+}
+
+.network-graph-transparent {
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.profile-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.profile-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.network-graph {
+    width: 100%;
+    height: 200px;
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-right {
+        order: -1;
+    }
+    
+    .profile-image {
+        max-width: 200px;
+    }
+}
+
+.hero-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.title-section {
+    flex: 1;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.content-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.network-graph {
+    width: 100%;
+    height: 300px;
+    margin-top: 2rem;
+}
+
+.action-buttons-container {
+    padding: 2rem 0;
+    margin-top: auto;
+    border-top: 1px solid var(--accent-light);
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+    .hero-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .profile-image {
+        margin-top: 2rem;
+    }
+    
+    .action-buttons {
+        flex-wrap: wrap;
+    }
 }

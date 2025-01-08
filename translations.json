@@ -1,7 +1,7 @@
 {
     "en": {
         "title": "Numbers with Heart:\nMy Journey from Actuarial Tables\nto Social Impact.",
-        "subtitle": "Picture an ex-actuary who left risk tables behind to transform social services—and now wields Python, SQL, and AI to tackle real-world challenges. From building e-commerce dashboards to fine-tuning Transformer models, I bring curiosity, empathy, and an unshakeable drive to innovate. If your team needs a data pro who blends finance-savvy, passion for people, and cutting-edge tech to unleash game-changing insights, I'm ready to make that happen. Let's harness data—and human dedication—to create meaningful impact together.",
+        "description": "I've always seen data as more than numbers—it's a lens through which I understand the world, from analyzing client cases to building innovative solutions. In my social work, I handled thousands of cases, retrieving critical information to align with legal rights and uncovering patterns that informed strategic decisions. I created databases to track court decisions and client trends, transforming raw data into actionable insights through visual storytelling with Tableau.\n\nMy passion for data led me to deepen my skills through self-learning and immersive programs at 42 Berlin and Code Academy, where I mastered Python, SQL, and machine learning. From building e-commerce dashboards to fine-tuning NLP models for parliamentary analysis, I've tackled diverse challenges that combine technical expertise with creative problem-solving.\n\nFor me, data is a bridge between insight and action—a way to empower decisions and drive meaningful impact. If your team values curiosity, expertise, and a commitment to making a difference, let's work together.",
         "nav": {
             "home": "Home",
             "projects": "Projects",
@@ -328,10 +328,10 @@
         "projects_title": "My Projects"
     },
     "de": {
-        "title": "Von Versicherungsmathematik zu sozialer Wirkung:\n Daten, die den Unterschied machen",
-        "subtitle": "Meine Reise begann bei der Welt der Versicherungstabellen, wo ich Risiken und Wahrscheinlichkeiten analysierte. Doch mein Wunsch, etwas Sinnstiftendes zu bewirken, führte mich in die soziale Arbeit, wo ich Menschen in schwierigen Lebenssituationen unterstützte. Heute verbinde ich diese beiden Welten – mit einem tiefen Verständnis für Daten und einem starken Fokus auf soziale Wirkung. Von der Entwicklung von E-Commerce-Dashboards bis hin zur Feinabstimmung von Transformer-Modellen: Ich bringe analytisches Denken, Empathie und einen unstillbaren Innovationsdrang mit. Daten sind für mich nicht nur Zahlen, sondern Geschichten – mit der Kraft, positive Veränderungen zu bewirken. Wenn Sie nach jemandem suchen, der Finanzwissen, Menschlichkeit und Spitzentechnologie vereint, um Ihre Herausforderungen zu lösen, freue ich mich darauf, gemeinsam mit Ihnen diese Vision umzusetzen. Lassen Sie uns Daten nutzen, um echte und nachhaltige Veränderungen zu schaffen",
+        "title": "Zahlen mit Herz:\nMeine Reise von versicherungsmathematischen Tabellen\nzu sozialer Wirkung.",
+        "description": "Daten waren für mich immer mehr als nur Zahlen – sie sind eine Perspektive, durch die ich die Welt verstehe. Von der Analyse von Klientenfällen bis hin zur Entwicklung innovativer Lösungen habe ich Daten als Werkzeug genutzt, um komplexe Herausforderungen zu meistern.\n\nIn meiner Arbeit im Sozialwesen habe ich tausende Fälle bearbeitet, entscheidende Informationen gewonnen und diese mit rechtlichen Vorgaben in Einklang gebracht, während ich Muster erkannte, die strategische Entscheidungen unterstützten. Ich habe Datenbanken entwickelt, um Gerichtsentscheidungen und Kliententrends zu verfolgen, und rohe Daten durch visuelle Darstellungen mit Tableau in umsetzbare Erkenntnisse verwandelt.\n\nFür mich sind Daten eine Brücke zwischen Erkenntnis und Handlung – ein Mittel, um Entscheidungen zu stärken und bedeutende Veränderungen zu bewirken. Wenn Ihr Team Neugier, Fachwissen und das Engagement für positive Veränderungen schätzt, freue ich mich darauf, meine Fähigkeiten und Leidenschaft einzubringen.",
         "nav": {
-            "home": "Startseite",
+            "home": "Start",
             "projects": "Projekte",
             "about": "Über mich"
         },

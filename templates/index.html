@@ -1,38 +1,56 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="hero-container">
-    <div class="hero-content">
-        <div class="hero-text">
-            <h1 class="headline">Numbers with Heart:<br>My Journey from Actuarial Tables<br>to Social Impact.</h1>
-            <p class="subheadline">Picture an ex-actuary who left risk tables behind to transform social services—and now wields Python, SQL, and AI to tackle real-world challenges. From building e-commerce dashboards to fine-tuning Transformer models, I bring curiosity, empathy, and an unshakeable drive to innovate. If your team needs a data pro who blends finance-savvy, passion for people, and cutting-edge tech to unleash game-changing insights, I'm ready to make that happen. Let's harness data—and human dedication—to create meaningful impact together.</p>
-            <div class="cta-group">
-                <a href="/static/files/resume.pdf" class="cta-button primary" download>
-                    <div class="cta-content">
-                        <i class="fas fa-download"></i>
-                        <span>Download<br>Resume</span>
-                    </div>
-                </a>
-                <a href="{{ url_for('projects', lang=lang) }}" class="cta-button secondary">
-                    <div class="cta-content">
-                        <i class="fas fa-project-diagram"></i>
-                        <span>Explore<br>Projects</span>
-                    </div>
-                </a>
-                <a href="#contact" class="cta-button tertiary">
-                    <div class="cta-content">
-                        <i class="fas fa-envelope"></i>
-                        <span>Contact<br>Me</span>
-                    </div>
-                </a>
+<main>
+    <div class="hero-container" style="margin-top: 4rem;">
+        <!-- First Row: Title and Photo -->
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div class="hero-header">
+                <div class="title-section">
+                    <h1 class="headline">Numbers with Heart:<br>My Journey from Actuarial Tables<br>to Social Impact.</h1>
+                </div>
+                <div class="profile-image" style="margin-top: 3.5rem; width: 160px; height: 160px;">
+                    <img src="{{ url_for('static', filename='images/my.jpg') }}" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="data-visualization">
-                <!-- Add an SVG or canvas element for dynamic data visualization -->
-                <div class="network-graph"></div>
+
+        <!-- Second Row: Graph and Text -->
+        <div style="max-width: 1200px; margin: 2rem auto 0; padding: 0 2rem;">
+            <div style="display: grid; grid-template-columns: 300px 1fr; gap: 2rem; align-items: center;">
+                <div class="network-graph network-graph-transparent" style="margin-top: -1rem;"></div>
+                <p class="subheadline">I've always seen data as more than numbers—it's a lens through which I understand the world, from analyzing client cases to building innovative solutions. In my social work, I handled thousands of cases, retrieving critical information to align with legal rights and uncovering patterns that informed strategic decisions. I created databases to track court decisions and client trends, transforming raw data into actionable insights through visual storytelling with Tableau.<br><br>My passion for data led me to deepen my skills through self-learning and immersive programs at 42 Berlin and Code Academy, where I mastered Python, SQL, and machine learning. From building e-commerce dashboards to fine-tuning NLP models for parliamentary analysis, I've tackled diverse challenges that combine technical expertise with creative problem-solving.<br><br>For me, data is a bridge between insight and action—a way to empower decisions and drive meaningful impact. If your team values curiosity, expertise, and a commitment to making a difference, let's work together.</p>
             </div>
         </div>
+    </div>
+</main>
+
+<div class="action-buttons-container">
+    <div class="action-buttons">
+        <a href="/static/files/resume.pdf" class="cta-button primary" download>
+            <div class="cta-content">
+                <i class="fas fa-download"></i>
+                <span>Resume</span>
+            </div>
+        </a>
+        <a href="{{ url_for('about', lang=lang) }}" class="cta-button secondary">
+            <div class="cta-content">
+                <i class="fas fa-user-circle"></i>
+                <span>About Me</span>
+            </div>
+        </a>
+        <a href="{{ url_for('projects', lang=lang) }}" class="cta-button secondary">
+            <div class="cta-content">
+                <i class="fas fa-project-diagram"></i>
+                <span>Projects</span>
+            </div>
+        </a>
+        <a href="mailto:fehmi.katar@gmail.com" class="cta-button tertiary">
+            <div class="cta-content">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </div>
+        </a>
     </div>
 </div>
 
@@ -40,8 +58,8 @@
 <script>
 // Add simple network visualization using D3.js
 const createNetworkGraph = () => {
-    const width = 500;
-    const height = 400;
+    const width = 300;
+    const height = 300;
     
     const svg = d3.select('.network-graph')
         .append('svg')
@@ -49,7 +67,7 @@ const createNetworkGraph = () => {
         .attr('height', height);
     
     // Create nodes and links for visualization
-    const nodes = Array.from({length: 20}, (_, i) => ({id: i}));
+    const nodes = Array.from({length: 12}, (_, i) => ({id: i}));
     const links = nodes.slice(1).map(n => ({
         source: Math.floor(Math.random() * n.id),
         target: n.id
@@ -57,7 +75,7 @@ const createNetworkGraph = () => {
     
     const simulation = d3.forceSimulation(nodes)
         .force('link', d3.forceLink(links))
-        .force('charge', d3.forceManyBody().strength(-50))
+        .force('charge', d3.forceManyBody().strength(-30))
         .force('center', d3.forceCenter(width / 2, height / 2));
     
     const link = svg.append('g')
