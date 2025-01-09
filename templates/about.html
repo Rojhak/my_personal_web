@@ -1,95 +1,88 @@
 {% extends "base.html" %}
-
 {% block content %}
-<section class="about-page">
-    <!-- Header Section -->
-    <div class="hero-section">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>From Actuarial Science to Data-Driven Social Impact</h1>
-                <p class="tagline">Transforming data into solutions, blending analytical precision with social understanding.</p>
-            </div>
+<!-- New Hero Section -->
+<section class="about-hero" style="margin:6rem auto 4rem; text-align:center; max-width:1200px;">
+    <!-- Main Title -->
+    <h1 style="font-size:3rem; font-weight:700; margin-bottom:1rem;">
+        {{ data.about_page.hero_title }}
+    </h1>
+    
+    <!-- Subtitle -->
+    <p style="font-size:1.2rem; color:#666; margin-bottom:4rem;">
+        {{ data.about_page.hero_tagline }}
+    </p>
+
+    <!-- Three-Card Grid -->
+    <div class="about-grid" 
+         style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;">
+         
+        <!-- 1) Actuarial Science Card -->
+        <div class="about-card" 
+             style="background:white; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);
+                    width:300px; max-width:90%; padding:2rem; transition:all 0.3s ease;">
+            <h2 style="font-size:1.4rem; margin-bottom:0.5rem;">
+                {{ data.about_page.timeline.0.title }}
+            </h2>
+            <p style="color:#777; font-size:1rem; margin-bottom:0;">
+                {{ data.about_page.timeline.0.subtitle }}
+            </p>
+        </div>
+
+        <!-- 2) Social Work & Practice Research Card -->
+        <div class="about-card" 
+             style="background:white; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);
+                    width:300px; max-width:90%; padding:2rem; transition:all 0.3s ease;">
+            <h2 style="font-size:1.4rem; margin-bottom:0.5rem;">
+                {{ data.about_page.timeline.1.title }}
+            </h2>
+            <p style="color:#777; font-size:1rem; margin-bottom:0;">
+                {{ data.about_page.timeline.1.subtitle }}
+            </p>
         </div>
         
-        <!-- Journey Timeline -->
-        <div class="journey-visual">
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <h3>Actuarial Science</h3>
-                        <p>Risk Analysis & Financial Modeling</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <h3>Social Work & Practice Research</h3>
-                        <p>Critical Analysis & Empirical Problem-Solving</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <h3>Data Science</h3>
-                        <p>AI & Machine Learning</p>
-                    </div>
-                </div>
-            </div>
+        <!-- 3) Data Science Card -->
+        <div class="about-card" 
+             style="background:white; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);
+                    width:300px; max-width:90%; padding:2rem; transition:all 0.3s ease;">
+            <h2 style="font-size:1.4rem; margin-bottom:0.5rem;">
+                {{ data.about_page.timeline.2.title }}
+            </h2>
+            <p style="color:#777; font-size:1rem; margin-bottom:0;">
+                {{ data.about_page.timeline.2.subtitle }}
+            </p>
         </div>
     </div>
+</section>
 
-    <div class="about-content">
+<!-- Existing About Page Content -->
+<section class="about-page">
+    <!-- Your existing about page content here -->
+    <div class="about-content" style="max-width:1200px; margin:0 auto; padding:0 2rem;">
         <!-- Education Section -->
-        <div class="about-section education">
-            <h2>Education</h2>
-            <div class="education-grid">
+        <div class="about-section education" style="margin-bottom:2.5rem;">
+            <h2>{{ data.about_page.education_title }}</h2>
+            <div class="education-grid" style="margin-top:1.5rem;">
+                {% for edu in data.about_page.education_cards %}
                 <div class="education-card">
                     <div class="edu-logo">
-                        <img src="{{ url_for('static', filename='images/42.png') }}" alt="42 Berlin">
+                        <img src="{{ url_for('static', filename=edu.logo) }}" alt="{{ edu.title }}">
                     </div>
                     <div class="edu-content">
-                        <h3>42 Berlin</h3>
-                        <p class="period">2024</p>
-                        <p class="description">Completed the intensive month-long "piscine" at 42 and continued in the full program from March to June 2024, developing skills in C programming, data structures, problem-solving, and peer-to-peer learning through project-based experience.</p>
+                        <h3>{{ edu.title }}</h3>
+                        {% if edu.institution %}
+                        <p class="institution">{{ edu.institution }}</p>
+                        {% endif %}
+                        <p class="period">{{ edu.period }}</p>
+                        <p class="description">{{ edu.desc }}</p>
                     </div>
                 </div>
-
-                <div class="education-card">
-                    <div class="edu-logo">
-                        <img src="{{ url_for('static', filename='images/ash.png') }}" alt="Alice Salomon Hochschule">
-                    </div>
-                    <div class="edu-content">
-                        <h3>M.A. in Social Work</h3>
-                        <p class="institution">Alice Salomon Hochschule Berlin</p>
-                        <p class="period">2017 - 2020</p>
-                        <p class="description">Completed a bachelor's program in Social Work, gaining expertise in critical analysis, diversity, and practical application of social theories, and pursued a master's program in Practice Research in Social Work and Pedagogy, focusing on empirical methods, interdisciplinary collaboration, and research-driven problem-solving.</p>
-                    </div>
-                </div>
-
-                <div class="education-card">
-                    <div class="edu-logo">
-                        <img src="{{ url_for('static', filename='images/marmara.png') }}" alt="Marmara University">
-                    </div>
-                    <div class="edu-content">
-                        <h3>B.S. in Actuarial Science</h3>
-                        <p class="institution">Marmara University (Bank and Insurance Faculty)</p>
-                        <p class="period">2004 - 2008</p>
-                        <p class="description">Specialized in risk analysis, statistical modeling, and financial mathematics. Developed statistical models for financial risk assessment, completed advanced coursework in Probability Theory and Risk Management.</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
 
         <!-- Certifications Section -->
-        <div class="about-section certifications">
-            <h2>Certifications & Education</h2>
+        <div class="about-section certifications" style="margin-bottom:2.5rem;">
+            <h2>{{ data.about_page.certifications_title }}</h2>
             
             <!-- Featured Certification -->
             <div class="certification-card featured">
@@ -98,68 +91,68 @@
                         <img src="{{ url_for('static', filename='images/code_academy.png') }}" alt="Code Academy Berlin">
                     </div>
                     <div class="cert-title">
-                        <h3>Data Science & Machine Learning Training</h3>
-                        <p class="issuer">Code Academy Berlin</p>
-                        <p class="period">2023</p>
+                        <h3>{{ data.about_page.featured_cert_title }}</h3>
+                        <p class="issuer">{{ data.about_page.featured_cert_issuer }}</p>
+                        <p class="period">{{ data.about_page.featured_cert_period }}</p>
                     </div>
                     <div class="achievement-badges">
                         <div class="badge">
                             <i class="fas fa-clock"></i>
                             <span class="number">850</span>
-                            <span class="label">Hours</span>
+                            <span class="label">{{ data.about_page.badge_hours }}</span>
                         </div>
                         <div class="badge">
                             <i class="fas fa-project-diagram"></i>
                             <span class="number">6</span>
-                            <span class="label">Projects</span>
+                            <span class="label">{{ data.about_page.badge_projects }}</span>
                         </div>
                         <div class="badge">
                             <i class="fas fa-calendar-alt"></i>
                             <span class="number">5</span>
-                            <span class="label">Months</span>
+                            <span class="label">{{ data.about_page.badge_months }}</span>
                         </div>
                     </div>
                 </div>
                 <div class="cert-content">
                     <div class="cert-content-left">
-                        <h4>Technical Expertise</h4>
+                        <h4>{{ data.about_page.featured_cert_tech_exp }}</h4>
                         <div class="highlights-grid">
                             <div class="highlight-item">
                                 <i class="fas fa-code"></i>
-                                <p><strong>Python Programming:</strong> Advanced data structures, OOP, functional programming</p>
+                                <p><strong>Python Programming:</strong> {{ data.about_page.python_programming }}</p>
                             </div>
                             <div class="highlight-item">
                                 <i class="fas fa-database"></i>
-                                <p><strong>SQL Mastery:</strong> Complex queries, database design, performance optimization</p>
+                                <p><strong>SQL Mastery:</strong> {{ data.about_page.sql_mastery }}</p>
                             </div>
                             <div class="highlight-item">
                                 <i class="fas fa-brain"></i>
-                                <p><strong>Machine Learning:</strong> Scikit-learn, TensorFlow, model deployment</p>
+                                <p><strong>Machine Learning:</strong> {{ data.about_page.ml_deployment }}</p>
                             </div>
                             <div class="highlight-item">
                                 <i class="fas fa-chart-bar"></i>
-                                <p><strong>Data Visualization:</strong> Matplotlib, Seaborn, Plotly, dashboard creation</p>
+                                <p><strong>Data Visualization:</strong> {{ data.about_page.data_viz }}</p>
                             </div>
                         </div>
                     </div>
                     <div class="cert-content-right">
-                        <h4>Advanced Skills & Development</h4>
+                        <h4>{{ data.about_page.featured_cert_adv_skills }}</h4>
                         <div class="highlights-grid">
                             <div class="highlight-item">
                                 <i class="fas fa-users"></i>
-                                <p><strong>In-Person Training:</strong> Completed 850 hours of intensive, hands-on coding sessions</p>
+                                <p><strong>In-Person Training:</strong> {{ data.about_page.in_person_training }}</p>
                             </div>
                             <div class="highlight-item">
                                 <i class="fas fa-tasks"></i>
-                                <p><strong>Scrum/Agile Methodology:</strong> Sprint planning, daily standups, retrospectives</p>
+                                <p><strong>Scrum/Agile Methodology:</strong> {{ data.about_page.scrum_agile }}</p>
                             </div>
                             <div class="highlight-item">
                                 <i class="fas fa-network-wired"></i>
-                                <p><strong>Deep Learning & NLP:</strong> Neural networks, transformers, text analysis</p>
+                                <p><strong>Deep Learning & NLP:</strong> {{ data.about_page.deep_nlp }}</p>
                             </div>
                             <div class="highlight-item">
                                 <i class="fas fa-robot"></i>
-                                <p><strong>Retrieval-Augmented Generation (RAG):</strong> LLM integration, context-aware responses</p>
+                                <p><strong>Retrieval-Augmented Generation (RAG):</strong> {{ data.about_page.rag_llm }}</p>
                             </div>
                         </div>
                     </div>
@@ -168,83 +161,66 @@
         </div>
 
         <!-- Technical Skills Section -->
-        <div class="about-section skills">
-            <h2>Technical Skills</h2>
+        <div class="about-section skills" style="margin-bottom:2.5rem;">
+            <h2>{{ data.about_page.tech_skills_title }}</h2>
             <div class="skills-grid">
+                <!-- 1) Programming Languages -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <h3><i class="fas fa-code"></i> {{ data.about_page.skills_section.programming_languages_title }}</h3>
                     <div class="tech-skills">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">R</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">C</span>
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
+                        {% for skill in data.about_page.skills_section.programming_languages %}
+                        <span class="skill-tag">{{ skill }}</span>
+                        {% endfor %}
                     </div>
                 </div>
 
+                <!-- 2) Machine Learning & AI -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-brain"></i> Machine Learning & AI</h3>
+                    <h3><i class="fas fa-brain"></i> {{ data.about_page.skills_section.ml_ai_title }}</h3>
                     <div class="tech-skills">
-                        <span class="skill-tag">Scikit-learn</span>
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">Neural Networks</span>
-                        <span class="skill-tag">NLP</span>
-                        <span class="skill-tag">Hugging Face</span>
-                        <span class="skill-tag">Transformers</span>
-                        <span class="skill-tag">RAG Systems</span>
-                        <span class="skill-tag">FAISS</span>
+                        {% for skill in data.about_page.skills_section.ml_ai_skills %}
+                        <span class="skill-tag">{{ skill }}</span>
+                        {% endfor %}
                     </div>
                 </div>
 
+                <!-- 3) Data Analysis & Visualization -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-database"></i> Data Analysis & Visualization</h3>
+                    <h3><i class="fas fa-database"></i> {{ data.about_page.skills_section.data_analysis_title }}</h3>
                     <div class="tech-skills">
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">NumPy</span>
-                        <span class="skill-tag">Matplotlib</span>
-                        <span class="skill-tag">Seaborn</span>
-                        <span class="skill-tag">ggplot2</span>
-                        <span class="skill-tag">dplyr</span>
-                        <span class="skill-tag">Tableau</span>
+                        {% for skill in data.about_page.skills_section.data_analysis_skills %}
+                        <span class="skill-tag">{{ skill }}</span>
+                        {% endfor %}
                     </div>
                 </div>
 
+                <!-- 4) Development & Tools -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-server"></i> Development & Tools</h3>
+                    <h3><i class="fas fa-server"></i> {{ data.about_page.skills_section.dev_tools_title }}</h3>
                     <div class="tech-skills">
-                        <span class="skill-tag">Flask</span>
-                        <span class="skill-tag">Streamlit</span>
-                        <span class="skill-tag">GitHub</span>
-                        <span class="skill-tag">AWS Lambda</span>
-                        <span class="skill-tag">Railway PostgreSQL</span>
-                        <span class="skill-tag">Railway SQL</span>
-                        <span class="skill-tag">Web Scraping</span>
-                        <span class="skill-tag">API Development</span>
-                        <span class="skill-tag">BigQuery</span>
-                        <span class="skill-tag">Google Sheets</span>
-                        <span class="skill-tag">Cloud Data Warehousing</span>
-                        <span class="skill-tag">Data Pipeline Development</span>
+                        {% for skill in data.about_page.skills_section.dev_tools_skills %}
+                        <span class="skill-tag">{{ skill }}</span>
+                        {% endfor %}
                     </div>
                 </div>
 
+                <!-- 5) Statistical Analysis -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-chart-line"></i> Statistical Analysis</h3>
+                    <h3><i class="fas fa-chart-line"></i> {{ data.about_page.skills_section.stats_analysis_title }}</h3>
                     <div class="tech-skills">
-                        <span class="skill-tag">Advanced Statistics</span>
-                        <span class="skill-tag">Hypothesis Testing</span>
-                        <span class="skill-tag">Regression Analysis</span>
-                        <span class="skill-tag">Time Series Analysis</span>
+                        {% for skill in data.about_page.skills_section.stats_analysis_skills %}
+                        <span class="skill-tag">{{ skill }}</span>
+                        {% endfor %}
                     </div>
                 </div>
 
+                <!-- 6) Project Management -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-tasks"></i> Project Management</h3>
+                    <h3><i class="fas fa-tasks"></i> {{ data.about_page.skills_section.pm_title }}</h3>
                     <div class="tech-skills">
-                        <span class="skill-tag">Agile/Scrum</span>
-                        <span class="skill-tag">JIRA</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">KPI Analysis</span>
+                        {% for skill in data.about_page.skills_section.pm_skills %}
+                        <span class="skill-tag">{{ skill }}</span>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -252,7 +228,7 @@
 
         <!-- Experience Section -->
         <div class="about-section experience">
-            <h2>Professional Experience</h2>
+            <h2>{{ data.about_page.professional_experience_title }}</h2>
             <div class="experience-grid">
                 <!-- Social Research Associate Experience -->
                 <div class="experience-card">
@@ -261,41 +237,45 @@
                             <img src="{{ url_for('static', filename='images/research.png') }}" alt="Research">
                         </div>
                         <div class="exp-title">
-                            <h3>Research Experience</h3>
+                            <h3>{{ data.about_page.research_experience_title }}</h3>
                         </div>
                     </div>
                     <div class="exp-content">
                         <div class="highlights-grid">
                             <div class="highlight-item">
                                 <i class="fas fa-microscope"></i>
-                                <p><strong>Research Assistant – Charité Berlin (2013)</strong><br>
-                                Contributed to the research project on elder care among Turkish-origin migrants in Berlin. Responsibilities included independently recruiting survey participants aged 59 and older, collaborating with institutions such as senior centers and associations, conducting standardized interviews, and providing status reports to the project management.</p>
+                                <p>
+                                  <strong>{{ data.about_page.research_experience.charite.title }}</strong><br>
+                                  {{ data.about_page.research_experience.charite.desc }}
+                                </p>
                             </div>
                             <div class="highlight-item">
                                 <i class="fas fa-users"></i>
-                                <p><strong>Research Assistant – Yekmal e.V., Berlin (2020)</strong><br>
-                                Actively supported the research project "Kurdisches Leben in Berlin," which analyzed the social and linguistic situation of Kurdish communities in Berlin. Involved in participant recruitment, data collection, and conducting structured interviews to gather quantitative data.</p>
+                                <p>
+                                  <strong>{{ data.about_page.research_experience.yekmal.title }}</strong><br>
+                                  {{ data.about_page.research_experience.yekmal.desc|safe }}
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Yekmal Experience -->
+                <!-- Yekmal e.V. Experience (Legal Consultant) -->
                 <div class="experience-card">
                     <div class="exp-header">
                         <div class="exp-logo">
                             <img src="{{ url_for('static', filename='images/yekmal.png') }}" alt="Yekmal e.V.">
                         </div>
                         <div class="exp-title">
-                            <h3>Legal Consultant & Team Lead, Right Department</h3>
+                            <h3>{{ data.about_page.legal_consultant_title }}</h3>
                             <p class="company">Yekmal e.V.</p>
-                            <p class="period">04/2016 - 12/2023</p>
+                            <p class="period">{{ data.about_page.legal_consultant_period }}</p>
                         </div>
                     </div>
                     <div class="exp-content">
                         <div class="cert-content">
                             <div class="cert-content-left">
-                                <h4>Legal & Leadership</h4>
+                                <h4>{{ data.about_page.legal_leadership_title }}</h4>
                                 <div class="highlights-grid">
                                     <div class="highlight-item">
                                         <i class="fas fa-balance-scale"></i>
@@ -316,11 +296,11 @@
                                 </div>
                             </div>
                             <div class="cert-content-right">
-                                <h4>Data & Process Management</h4>
+                                <h4>{{ data.about_page.data_process_title }}</h4>
                                 <div class="highlights-grid">
                                     <div class="highlight-item">
                                         <i class="fas fa-database"></i>
-                                        <p><strong>Database Development:</strong> Created comprehensive database for court decisions and data.</p>
+                                        <p><strong>Database Development:</strong> Created a comprehensive database for court decisions and data.</p>
                                     </div>
                                     <div class="highlight-item">
                                         <i class="fas fa-chart-bar"></i>
@@ -338,41 +318,54 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> <!-- End Yekmal e.V. experience -->
             </div>
         </div>
 
         <!-- Languages Section -->
-        <div class="about-section languages">
-            <h2>Languages</h2>
+        <div class="about-section languages" style="margin-bottom:2.5rem;">
+            <h2>{{ data.about_page.languages_title }}</h2>
             <div class="languages-grid">
-                {% for lang in data.about.languages %}
+                {% for lang_item in data.about_page.language_cards %}
                 <div class="language-card">
                     <div class="lang-header">
-                        <span class="lang-flag">{{ lang.flag }}</span>
-                        <h3>{{ lang.language }}</h3>
+                        {% if lang_item.flag == "KURDISH_GRADIENT" %}
+                            <!-- Kurdish tri-color gradient flag -->
+                            <span class="lang-flag" style="
+                                display:inline-block; 
+                                width:30px; 
+                                height:20px; 
+                                margin-right:0.5rem;
+                                background: linear-gradient(to right, red 33%, green 33%, green 66%, yellow 66%);
+                                border:1px solid #ccc;
+                                border-radius:2px;">
+                            </span>
+                        {% else %}
+                            <span class="lang-flag">{{ lang_item.flag }}</span>
+                        {% endif %}
+                        <h3>{{ lang_item.language }}</h3>
                     </div>
-                    <div class="language-badge {{ lang.level|lower }}">
+                    <div class="language-badge {{ lang_item.level|lower }}">
                         <i class="fas fa-check-circle"></i>
-                        <span>{{ lang.level }}</span>
+                        <span>{{ lang_item.level }}</span>
                     </div>
-                    <p class="description">{{ lang.description }}</p>
+                    <p class="description">{{ lang_item.description }}</p>
                 </div>
                 {% endfor %}
             </div>
         </div>
 
         <!-- Interests/Hobbies Section -->
-        <div class="about-section interests">
-            <h2>Beyond Work</h2>
+        <div class="about-section beyond-work" style="margin-bottom:2.5rem;">
+            <h2>{{ data.about_page.beyond_work_title }}</h2>
             <div class="interests-grid">
                 <div class="interest-card">
                     <div class="interest-image">
                         <img src="{{ url_for('static', filename='images/fehmi.jpg') }}" alt="Cycling">
                     </div>
                     <div class="interest-content">
-                        <h3>Cycling</h3>
-                        <p>Explored 15 countries by bicycle, combining adventure with sustainable travel</p>
+                        <h3>{{ data.about_page.beyond_work.cycling.title }}</h3>
+                        <p>{{ data.about_page.beyond_work.cycling.desc }}</p>
                     </div>
                 </div>
                 <div class="interest-card">
@@ -380,8 +373,8 @@
                         <i class="fas fa-futbol"></i>
                     </div>
                     <div class="interest-content">
-                        <h3>Football</h3>
-                        <p>Active player in Berlin's amateur league</p>
+                        <h3>{{ data.about_page.beyond_work.football.title }}</h3>
+                        <p>{{ data.about_page.beyond_work.football.desc }}</p>
                     </div>
                 </div>
             </div>
@@ -410,263 +403,4 @@ function scrollToTop() {
     });
 }
 </script>
-
-<style>
-.hero-section {
-    background: var(--background-color);
-    padding: 4rem 0;
-    text-align: center;
-}
-
-.hero-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-.hero-text {
-    text-align: center;
-}
-
-.hero-text h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    color: var(--primary-color);
-}
-
-.tagline {
-    font-size: 1.4rem;
-    color: var(--accent-color);
-    max-width: 800px;
-    margin: 0 auto 4rem;
-    line-height: 1.6;
-    text-align: center;
-    padding: 0 1rem;
-}
-
-.timeline {
-    display: flex;
-    justify-content: space-around;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    gap: 2rem;
-}
-
-.timeline-item {
-    text-align: center;
-    flex: 1;
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
-}
-
-.timeline-item:hover {
-    transform: translateY(-5px);
-}
-
-.timeline-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--accent-light);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-}
-
-.timeline-icon i {
-    font-size: 2rem;
-    color: var(--accent-color);
-}
-
-.timeline-content h3 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.timeline-content p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-}
-
-@media (max-width: 768px) {
-    .timeline {
-        flex-direction: column;
-    }
-
-    .hero-text h1 {
-        font-size: 2.2rem;
-        padding: 0 1rem;
-    }
-
-    .tagline {
-        font-size: 1.2rem;
-        padding: 0 1rem;
-    }
-}
-
-.about-section h2 {
-    font-size: 2.2rem;
-    color: var(--primary-color);
-    margin-bottom: 3rem;
-    font-weight: 600;
-    text-align: center;
-    position: relative;
-    padding-bottom: 1rem;
-}
-
-.about-section h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: var(--accent-color);
-}
-
-.education-grid, .languages-grid, .interests-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.cert-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-.cert-logo {
-    width: 120px;
-    height: 120px;
-    flex-shrink: 0;
-}
-
-.cert-title {
-    flex-grow: 1;
-    padding: 0 2rem;
-    text-align: left;
-}
-
-.achievement-badges {
-    display: flex;
-    gap: 1.5rem;
-    margin-left: auto;
-    padding-left: 2rem;
-}
-
-.badge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    min-width: 80px;
-}
-
-.badge i {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-    margin-bottom: 0.5rem;
-}
-
-.badge .number {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--primary-color);
-}
-
-.badge .label {
-    font-size: 0.9rem;
-    color: var(--secondary-color);
-}
-
-@media (max-width: 768px) {
-    .cert-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-    }
-
-    .cert-title {
-        padding: 0;
-        text-align: center;
-    }
-
-    .achievement-badges {
-        padding: 0;
-        margin: 0 auto;
-    }
-
-    .badge {
-        min-width: 70px;
-        padding: 0.8rem;
-    }
-}
-
-.exp-header {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.exp-logo {
-    width: 100px;
-    height: 100px;
-    flex-shrink: 0;
-}
-
-.exp-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.highlight-item {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    margin-bottom: 1.5rem;
-}
-
-.highlight-item strong {
-    color: var(--primary-color);
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.highlight-item p {
-    color: var(--secondary-color);
-    line-height: 1.6;
-}
-
-.highlight-item i {
-    color: var(--accent-color);
-    margin-right: 1rem;
-    font-size: 1.2rem;
-}
-
-@media (max-width: 768px) {
-    .exp-header {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .exp-logo {
-        margin: 0 auto;
-    }
-}
-</style>
-{% endblock %} 
+{% endblock %}

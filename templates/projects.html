@@ -1,435 +1,443 @@
 {% extends "base.html" %}
-
 {% block content %}
-<section class="projects-section">
-    <h2 class="section-title">{{ data.projects_title }}</h2>
-    <div class="projects-grid">
-        <!-- BundesRAG Analytics -->
-        <div class="project-card">
-            <div class="project-header">
-                <div class="project-info">
-                    <h3 class="project-title">BundesRAG Analytics</h3>
-                    <p class="project-description">A comprehensive analysis system for German parliamentary speeches (2000-2022), based on Retrieval-Augmented Generation (RAG). This innovative platform combines FAISS vector search, SentenceTransformers, and spaCy to transform parliamentary discourse into actionable insights.</p>
+<section class="projects-section" 
+         style="margin-top:5rem; padding:3rem 1rem; max-width:1200px; margin-left:auto; margin-right:auto;">
+    <!-- margin-top:5rem moves the section down from the header -->
+    
+    <h2 class="section-title" style="text-align:center; margin-bottom:2rem;">
+        {{ data.projects_page.section_title }}
+    </h2>
+
+    <!-- We'll use display:flex + flex-direction:column + gap to separate project cards -->
+    <div class="projects-grid" style="display:flex; flex-direction:column; gap:3rem;">
+        
+        <!-- 1) BundesRAG Analytics -->
+        <div class="project-card" 
+             style="background:white; border-radius:12px; padding:2rem; 
+                    box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <div class="project-header" 
+                 style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;">
+                
+                <!-- Logo on the left -->
+                <div class="project-logo" 
+                     style="flex-shrink:0; width:150px; height:150px; border-radius:50%; overflow:hidden;">
+                    <img src="{{ url_for('static', filename='images/' ~ data.projects_page.bundesrag.image) }}"
+                         alt="BundesRAG Analytics" 
+                         style="object-fit:cover; width:100%; height:100%;">
                 </div>
-                <div class="project-logo">
-                    <img src="{{ url_for('static', filename='images/bundestag.png') }}" alt="BundesRAG Analytics">
+                
+                <!-- Info on the right -->
+                <div class="project-info" style="flex:1;">
+                    <h3 class="project-title" style="font-size:1.5rem; margin-bottom:1rem; color:#2c3e50;">
+                        {{ data.projects_page.bundesrag.title }}
+                    </h3>
+                    <p class="project-description" style="line-height:1.6; color:#555;">
+                        {{ data.projects_page.bundesrag.description }}
+                    </p>
                 </div>
             </div>
             
-            <div class="features-list">
-                <div class="feature-item">
-                    <span>🔍 <strong>Semantic Search</strong>: Context-aware search using FAISS and SentenceTransformers</span>
-                </div>
-                <div class="feature-item">
-                    <span>📊 <strong>Real-time Analytics</strong>: Dynamic visualization of political trends</span>
-                </div>
-                <div class="feature-item">
-                    <span>🎯 <strong>Topic Tracking</strong>: AI-powered analysis of topic evolution</span>
-                </div>
-                <div class="feature-item">
-                    <span>🔄 <strong>RAG Pipeline</strong>: Intelligent context extraction</span>
-                </div>
-                <div class="feature-item">
-                    <span>🌐 <strong>Multilingual Support</strong>: German and English</span>
-                </div>
-                <div class="feature-item">
-                    <span>📈 <strong>Interactive Dashboard</strong>: Real-time data exploration</span>
-                </div>
-                <div class="feature-item">
-                    <span>👥 <strong>Speaker Analysis</strong>: Contributions and topics by representatives</span>
-                </div>
-                <div class="feature-item">
-                    <span>📂 <strong>Advanced Topic Clustering</strong>: Automated grouping of semantically similar topics</span>
-                </div>
-                <div class="feature-item">
-                    <span>📑 <strong>Legal & Statistical Extraction</strong>: Identifies legal references and quantitative data</span>
-                </div>
-            </div>
-
-            <div class="project-footer">
-                <a href="https://github.com/fehmikara/ai_bundestag" class="view-github-btn">View on GitHub</a>
-                <div class="tech-stack">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Streamlit</span>
-                    <span class="tech-tag">Hugging Face</span>
-                    <span class="tech-tag">FAISS</span>
-                    <span class="tech-tag">spaCy</span>
-                    <span class="tech-tag">SentenceTransformers</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Personal Portfolio Website -->
-        <div class="project-card">
-            <div class="project-header">
-                <div class="project-info">
-                    <h3 class="project-title">Personal Portfolio Website</h3>
-                    <p class="project-description">Modern, responsive portfolio website showcasing my journey from Actuarial Science to Data Science, featuring interactive presentations and project showcases.</p>
-                </div>
-                <div class="project-logo">
-                    <img src="{{ url_for('static', filename='images/fk_log.png') }}" alt="Portfolio Website">
-                </div>
-            </div>
-
-            <div class="features-list">
-                <div class="feature-item">
-                    <span>🎨 Modern Design: Clean, responsive layout with intuitive navigation</span>
-                </div>
-                <div class="feature-item">
-                    <span>📄 Interactive Presentations: Embedded PDF viewer with navigation controls</span>
-                </div>
-                <div class="feature-item">
-                    <span>🌍 Multilingual: Support for English and German</span>
-                </div>
-            </div>
-
-            <div class="project-footer">
-                <a href="https://github.com/fehmikara/my_personal_web" class="view-github-btn">View on GitHub</a>
-                <div class="tech-stack">
-                    <span class="tech-tag">Flask</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">HTML5/CSS3</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Jinja2</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bitcoin Analysis System -->
-        <div class="project-card">
-            <div class="project-header">
-                <div class="project-info">
-                    <h3 class="project-title">Bitcoin Analysis System</h3>
-                    <p class="project-description">Development of an automated system using AWS Lambda functions for Bitcoin price tracking, news collection, and sentiment analysis with Hugging Face LLMs. Includes real-time data pipeline with PostgreSQL integration.</p>
-                </div>
-                <div class="project-logo">
-                    <img src="{{ url_for('static', filename='images/aws.png') }}" alt="Bitcoin Analysis">
-                </div>
-            </div>
-
-            <div class="features-list">
-                <div class="feature-item">
-                    <span>🤖 Automated data pipeline for Bitcoin price tracking</span>
-                </div>
-                <div class="feature-item">
-                    <span>📰 News collection with sentiment analysis</span>
-                </div>
-                <div class="feature-item">
-                    <span>☁️ AWS Lambda serverless architecture</span>
-                </div>
-                <div class="feature-item">
-                    <span>🗄️ Railway PostgreSQL database integration</span>
-                </div>
-                <div class="feature-item">
-                    <span>🧠 Hugging Face Transformers for NLP</span>
-                </div>
-            </div>
-
-            <div class="project-footer">
-                <a href="https://github.com/fehmikara/btc_analysis" class="view-github-btn">View on GitHub</a>
-                <div class="tech-stack">
-                    <span class="tech-tag">AWS Lambda</span>
-                    <span class="tech-tag">Python 3.10</span>
-                    <span class="tech-tag">PostgreSQL</span>
-                    <span class="tech-tag">Hugging Face API</span>
-                    <span class="tech-tag">Web Scraping</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sales Analytics Dashboard -->
-        <div class="project-card">
-            <div class="project-header">
-                <div class="project-info">
-                    <h3 class="project-title">Sales Analytics Dashboard</h3>
-                    <p class="project-description">Interactive sales analytics dashboard built with Tableau, featuring real-time data visualization and comprehensive business insights.</p>
-                </div>
-                <div class="project-logo">
-                    <img src="{{ url_for('static', filename='images/tablaeu.png') }}" alt="Sales Analytics">
-                </div>
-            </div>
-
-            <div class="features-list">
-                <div class="feature-item">
-                    <span>📊 Dynamic sales metrics visualization</span>
-                </div>
-                <div class="feature-item">
-                    <span>🔍 Interactive filtering options</span>
-                </div>
-                <div class="feature-item">
-                    <span>⚡ Real-time data updates</span>
-                </div>
-                <div class="feature-item">
-                    <span>📈 Multi-dimensional analysis</span>
-                </div>
-            </div>
-
-            <div class="dashboard-preview">
-                <div class="sales-metrics">
-                    <div class="metric">
-                        <h4>Total Sales</h4>
-                        <p class="value">$733K</p>
-                        <p class="change">↑20.16% vs. PY</p>
+            <!-- Features List -->
+            <div class="features-list" style="
+                display:grid; 
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+                gap:1.5rem; 
+                margin:2rem;
+                padding:1rem;">
+                
+                {% for feat in data.projects_page.bundesrag.features %}
+                <div class="feature-item" style="
+                    display:flex; 
+                    align-items:flex-start; 
+                    gap:0.8rem; 
+                    background:#f0f7ff; 
+                    padding:1rem; 
+                    border-radius:8px; 
+                    box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                    
+                    <!-- Feature Icon -->
+                    <div class="feature-icon" style="flex-shrink:0; color:#3498db; font-size:1.6rem;">
+                        {% if loop.index == 1 %}<i class="fas fa-search"></i>
+                        {% elif loop.index == 2 %}<i class="fas fa-chart-line"></i>
+                        {% elif loop.index == 3 %}<i class="fas fa-crosshairs"></i>
+                        {% elif loop.index == 4 %}<i class="fas fa-sync-alt"></i>
+                        {% elif loop.index == 5 %}<i class="fas fa-globe"></i>
+                        {% elif loop.index == 6 %}<i class="fas fa-chart-area"></i>
+                        {% elif loop.index == 7 %}<i class="fas fa-user-friends"></i>
+                        {% elif loop.index == 8 %}<i class="fas fa-clone"></i>
+                        {% elif loop.index == 9 %}<i class="fas fa-file-alt"></i>
+                        {% else %}<i class="fas fa-cube"></i>
+                        {% endif %}
                     </div>
-                    <div class="metric">
-                        <h4>Total Profit</h4>
-                        <p class="value">93K</p>
-                        <p class="change">↑14.24% vs. PY</p>
-                    </div>
-                    <div class="metric">
-                        <h4>Total Quantity</h4>
-                        <p class="value">12,476</p>
-                        <p class="change">↑26.83% vs. PY</p>
+                    
+                    <!-- Feature Text -->
+                    <div class="feature-text" style="line-height:1.5; color:#555;">
+                        {% set feat_parts = feat.split(':') %}
+                        {% if feat_parts|length > 1 %}
+                            <strong style="color:#2c3e50;">{{ feat_parts[0] }}:</strong>
+                            {{ feat_parts[1] }}
+                        {% else %}
+                            {{ feat }}
+                        {% endif %}
                     </div>
                 </div>
-                <div class="tableau-embed">
-                    <iframe src="https://public.tableau.com/views/BAProject_dasboard/SalesDashboard?:showVizHome=no&:embed=true" frameborder="0" width="100%" height="600"></iframe>
-                </div>
+                {% endfor %}
             </div>
 
-            <div class="project-footer">
-                <a href="https://public.tableau.com/app/profile/fehmi.katar" class="view-github-btn">View Dashboard</a>
-                <div class="tech-stack">
-                    <span class="tech-tag">Tableau</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">SQL</span>
-                    <span class="tech-tag">Data Analysis</span>
+            <!-- Footer: GitHub + Tech Stack -->
+            <div class="project-footer" style="
+                 display:flex; 
+                 align-items:center; 
+                 justify-content:space-between; 
+                 margin-top:1.5rem; 
+                 flex-wrap:wrap;">
+                 
+                <a href="{{ data.projects_page.bundesrag.link }}" 
+                   class="view-github-btn" 
+                   target="_blank"
+                   style="background:#3498db; color:white; padding:0.8rem 1.5rem; border-radius:6px; 
+                          text-decoration:none; transition:0.3s;">
+                    {{ data.projects_page.bundesrag.github_button }}
+                </a>
+                
+                <div class="tech-stack" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem;">
+                    {% for tech in data.projects_page.bundesrag.tech_stack %}
+                    <span class="tech-tag" style="
+                          background:#ebf5ff; 
+                          color:#3498db; 
+                          padding:0.3rem 0.8rem; 
+                          border-radius:20px; 
+                          font-size:0.85rem;">
+                        {{ tech }}
+                    </span>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-    </div>
+        
+        <!-- 2) Personal Portfolio Website -->
+        <div class="project-card" 
+             style="background:white; border-radius:12px; padding:2rem; 
+                    box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <div class="project-header" 
+                 style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;">
+                
+                <div class="project-logo" 
+                     style="flex-shrink:0; width:150px; height:150px; border-radius:50%; overflow:hidden;">
+                    <img src="{{ url_for('static', filename='images/' ~ data.projects_page.portfolio_site.image) }}"
+                         alt="Portfolio Website"
+                         style="object-fit:cover; width:100%; height:100%;">
+                </div>
+                
+                <div class="project-info" style="flex:1;">
+                    <h3 class="project-title" style="font-size:1.5rem; margin-bottom:1rem; color:#2c3e50;">
+                        {{ data.projects_page.portfolio_site.title }}
+                    </h3>
+                    <p class="project-description" style="line-height:1.6; color:#555;">
+                        {{ data.projects_page.portfolio_site.description }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="features-list" style="
+                display:grid; 
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+                gap:1.5rem; 
+                margin:2rem;
+                padding:1rem;">
+                
+                {% for feat in data.projects_page.portfolio_site.features %}
+                <div class="feature-item" style="
+                    display:flex; 
+                    align-items:flex-start; 
+                    gap:0.8rem; 
+                    background:#f0f7ff; 
+                    padding:1rem; 
+                    border-radius:8px; 
+                    box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                    
+                    <!-- Feature Icon -->
+                    <div class="feature-icon" style="flex-shrink:0; color:#3498db; font-size:1.6rem;">
+                        {% if loop.index == 1 %}<i class="fas fa-search"></i>
+                        {% elif loop.index == 2 %}<i class="fas fa-chart-line"></i>
+                        {% elif loop.index == 3 %}<i class="fas fa-crosshairs"></i>
+                        {% elif loop.index == 4 %}<i class="fas fa-sync-alt"></i>
+                        {% elif loop.index == 5 %}<i class="fas fa-globe"></i>
+                        {% elif loop.index == 6 %}<i class="fas fa-chart-area"></i>
+                        {% elif loop.index == 7 %}<i class="fas fa-user-friends"></i>
+                        {% elif loop.index == 8 %}<i class="fas fa-clone"></i>
+                        {% elif loop.index == 9 %}<i class="fas fa-file-alt"></i>
+                        {% else %}<i class="fas fa-cube"></i>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Feature Text -->
+                    <div class="feature-text" style="line-height:1.5; color:#555;">
+                        {% set feat_parts = feat.split(':') %}
+                        {% if feat_parts|length > 1 %}
+                            <strong style="color:#2c3e50;">{{ feat_parts[0] }}:</strong>
+                            {{ feat_parts[1] }}
+                        {% else %}
+                            {{ feat }}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="project-footer" style="
+                 display:flex; 
+                 align-items:center; 
+                 justify-content:space-between; 
+                 margin-top:1.5rem; 
+                 flex-wrap:wrap;">
+                 
+                <a href="{{ data.projects_page.portfolio_site.link }}" 
+                   class="view-github-btn" 
+                   target="_blank"
+                   style="background:#3498db; color:white; padding:0.8rem 1.5rem; border-radius:6px; text-decoration:none; transition:0.3s;">
+                    {{ data.projects_page.portfolio_site.github_button }}
+                </a>
+                
+                <div class="tech-stack" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem;">
+                    {% for tech in data.projects_page.portfolio_site.tech_stack %}
+                    <span class="tech-tag" style="
+                          background:#ebf5ff; 
+                          color:#3498db; 
+                          padding:0.3rem 0.8rem; 
+                          border-radius:20px; 
+                          font-size:0.85rem;">
+                        {{ tech }}
+                    </span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- 3) Bitcoin Analysis System -->
+        <div class="project-card" 
+             style="background:white; border-radius:12px; padding:2rem; 
+                    box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <div class="project-header" 
+                 style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;">
+                
+                <div class="project-logo" 
+                     style="flex-shrink:0; width:150px; height:150px; border-radius:50%; overflow:hidden;">
+                    <img src="{{ url_for('static', filename='images/' ~ data.projects_page.bitcoin.image) }}"
+                         alt="Bitcoin Analysis"
+                         style="object-fit:cover; width:100%; height:100%;">
+                </div>
+                
+                <div class="project-info" style="flex:1;">
+                    <h3 class="project-title" style="font-size:1.5rem; margin-bottom:1rem; color:#2c3e50;">
+                        {{ data.projects_page.bitcoin.title }}
+                    </h3>
+                    <p class="project-description" style="line-height:1.6; color:#555;">
+                        {{ data.projects_page.bitcoin.description }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="features-list" style="
+                display:grid; 
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+                gap:1.5rem; 
+                margin:2rem;
+                padding:1rem;">
+                
+                {% for feat in data.projects_page.bitcoin.features %}
+                <div class="feature-item" style="
+                    display:flex; 
+                    align-items:flex-start; 
+                    gap:0.8rem; 
+                    background:#f0f7ff; 
+                    padding:1rem; 
+                    border-radius:8px; 
+                    box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                    
+                    <!-- Feature Icon -->
+                    <div class="feature-icon" style="flex-shrink:0; color:#3498db; font-size:1.6rem;">
+                        {% if loop.index == 1 %}<i class="fas fa-search"></i>
+                        {% elif loop.index == 2 %}<i class="fas fa-chart-line"></i>
+                        {% elif loop.index == 3 %}<i class="fas fa-crosshairs"></i>
+                        {% elif loop.index == 4 %}<i class="fas fa-sync-alt"></i>
+                        {% elif loop.index == 5 %}<i class="fas fa-globe"></i>
+                        {% elif loop.index == 6 %}<i class="fas fa-chart-area"></i>
+                        {% elif loop.index == 7 %}<i class="fas fa-user-friends"></i>
+                        {% elif loop.index == 8 %}<i class="fas fa-clone"></i>
+                        {% elif loop.index == 9 %}<i class="fas fa-file-alt"></i>
+                        {% else %}<i class="fas fa-cube"></i>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Feature Text -->
+                    <div class="feature-text" style="line-height:1.5; color:#555;">
+                        {% set feat_parts = feat.split(':') %}
+                        {% if feat_parts|length > 1 %}
+                            <strong style="color:#2c3e50;">{{ feat_parts[0] }}:</strong>
+                            {{ feat_parts[1] }}
+                        {% else %}
+                            {{ feat }}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="project-footer" style="
+                 display:flex; 
+                 align-items:center; 
+                 justify-content:space-between; 
+                 margin-top:1.5rem; 
+                 flex-wrap:wrap;">
+                 
+                <a href="{{ data.projects_page.bitcoin.link }}" 
+                   class="view-github-btn" 
+                   target="_blank"
+                   style="background:#3498db; color:white; padding:0.8rem 1.5rem; border-radius:6px; text-decoration:none; transition:0.3s;">
+                    {{ data.projects_page.bitcoin.github_button }}
+                </a>
+                
+                <div class="tech-stack" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem;">
+                    {% for tech in data.projects_page.bitcoin.tech_stack %}
+                    <span class="tech-tag" style="
+                          background:#ebf5ff; 
+                          color:#3498db; 
+                          padding:0.3rem 0.8rem; 
+                          border-radius:20px; 
+                          font-size:0.85rem;">
+                        {{ tech }}
+                    </span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- 4) Sales Analytics Dashboard -->
+        <div class="project-card" 
+             style="background:white; border-radius:12px; padding:2rem; 
+                    box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <div class="project-header" 
+                 style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;">
+                
+                <div class="project-logo" 
+                     style="flex-shrink:0; width:150px; height:150px; border-radius:50%; overflow:hidden;">
+                    <img src="{{ url_for('static', filename='images/' ~ data.projects_page.sales_dashboard.image) }}"
+                         alt="Sales Analytics"
+                         style="object-fit:cover; width:100%; height:100%;">
+                </div>
+                
+                <div class="project-info" style="flex:1;">
+                    <h3 class="project-title" style="font-size:1.5rem; margin-bottom:1rem; color:#2c3e50;">
+                        {{ data.projects_page.sales_dashboard.title }}
+                    </h3>
+                    <p class="project-description" style="line-height:1.6; color:#555;">
+                        {{ data.projects_page.sales_dashboard.description }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="features-list" style="
+                display:grid; 
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+                gap:1.5rem; 
+                margin:2rem;
+                padding:1rem;">
+                
+                {% for feat in data.projects_page.sales_dashboard.features %}
+                <div class="feature-item" style="
+                    display:flex; 
+                    align-items:flex-start; 
+                    gap:0.8rem; 
+                    background:#f0f7ff; 
+                    padding:1rem; 
+                    border-radius:8px; 
+                    box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                    
+                    <!-- Feature Icon -->
+                    <div class="feature-icon" style="flex-shrink:0; color:#3498db; font-size:1.6rem;">
+                        {% if loop.index == 1 %}<i class="fas fa-search"></i>
+                        {% elif loop.index == 2 %}<i class="fas fa-chart-line"></i>
+                        {% elif loop.index == 3 %}<i class="fas fa-crosshairs"></i>
+                        {% elif loop.index == 4 %}<i class="fas fa-sync-alt"></i>
+                        {% elif loop.index == 5 %}<i class="fas fa-globe"></i>
+                        {% elif loop.index == 6 %}<i class="fas fa-chart-area"></i>
+                        {% elif loop.index == 7 %}<i class="fas fa-user-friends"></i>
+                        {% elif loop.index == 8 %}<i class="fas fa-clone"></i>
+                        {% elif loop.index == 9 %}<i class="fas fa-file-alt"></i>
+                        {% else %}<i class="fas fa-cube"></i>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Feature Text -->
+                    <div class="feature-text" style="line-height:1.5; color:#555;">
+                        {% set feat_parts = feat.split(':') %}
+                        {% if feat_parts|length > 1 %}
+                            <strong style="color:#2c3e50;">{{ feat_parts[0] }}:</strong>
+                            {{ feat_parts[1] }}
+                        {% else %}
+                            {{ feat }}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Dashboard Preview -->
+            <div class="dashboard-preview" style="margin-top:1.5rem;">
+                <div class="sales-metrics" style="display:flex; gap:2rem; flex-wrap:wrap;">
+                    {% for metric in data.projects_page.sales_dashboard.dashboard_metrics %}
+                    <div class="metric" style="
+                         background:white; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1);
+                         flex:1; min-width:150px; padding:1rem; text-align:center;">
+                        <h4 style="margin-bottom:0.5rem; color:#7f8c8d;">{{ metric.title }}</h4>
+                        <p class="value" style="font-size:1.4rem; font-weight:bold; margin:0.5rem 0; color:#2c3e50;">
+                            {{ metric.value }}
+                        </p>
+                        <p class="change" style="color:#28a745; font-weight:500;">
+                            {{ metric.change }}
+                        </p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="tableau-embed" style="
+                     margin-top:2rem; border-radius:8px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+                    <iframe src="{{ data.projects_page.sales_dashboard.tableau_iframe }}"
+                            frameborder="0" width="100%" height="600"></iframe>
+                </div>
+            </div>
+
+            <div class="project-footer" style="
+                 display:flex; 
+                 align-items:center; 
+                 justify-content:space-between; 
+                 margin-top:1.5rem; 
+                 flex-wrap:wrap;">
+                 
+                <a href="{{ data.projects_page.sales_dashboard.tableau_link }}" 
+                   class="view-github-btn" 
+                   target="_blank"
+                   style="background:#3498db; color:white; padding:0.8rem 1.5rem; border-radius:6px; 
+                          text-decoration:none; transition:0.3s;">
+                    {{ data.projects_page.sales_dashboard.dashboard_button }}
+                </a>
+                
+                <div class="tech-stack" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem;">
+                    {% for tech in data.projects_page.sales_dashboard.tech_stack %}
+                    <span class="tech-tag" style="
+                          background:#ebf5ff; 
+                          color:#3498db; 
+                          padding:0.3rem 0.8rem; 
+                          border-radius:20px; 
+                          font-size:0.85rem;">
+                        {{ tech }}
+                    </span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+    </div> <!-- end .projects-grid -->
 </section>
-
-<style>
-.projects-section {
-    padding: 6rem 2rem 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.section-title {
-    font-size: 3.5rem;
-    color: var(--primary-color);
-    margin: 0 auto 1.5rem;
-    position: relative;
-    text-align: center;
-    display: inline-block;
-    padding-bottom: 1rem;
-    font-weight: 600;
-}
-
-.section-title::after {
-    display: none;
-}
-
-.project-card {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.project-header {
-    display: flex;
-    align-items: stretch;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.project-info {
-    flex: 3;
-    order: 2;
-    text-align: center;
-}
-
-.project-title {
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    position: relative;
-    display: block;
-    text-align: center;
-    padding-bottom: 1rem;
-}
-
-.project-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: var(--accent-color);
-}
-
-.project-logo {
-    flex: 1;
-    order: 1;
-    width: 180px;
-    height: 180px;
-    min-width: 180px;
-    max-width: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    overflow: hidden;
-    padding: 0;
-    background: none;
-    box-shadow: none;
-    margin: 0 auto;
-}
-
-.project-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.features-list {
-    margin: 2rem 0;
-}
-
-.feature-item {
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-}
-
-.feature-item span {
-    color: var(--secondary-color);
-}
-
-.feature-item span strong {
-    color: var(--primary-color);
-    font-weight: 600;
-}
-
-.tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin-top: 1rem;
-    justify-content: center;
-}
-
-.tech-tag {
-    background: var(--accent-light);
-    color: var(--accent-color);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
-
-.tech-tag:hover {
-    background: var(--accent-color);
-    color: white;
-}
-
-.view-github-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.8rem 2rem;
-    background: var(--accent-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 500;
-    margin: 0 auto 1rem;
-    transition: all 0.3s ease;
-    min-width: 200px;
-}
-
-.view-github-btn:hover {
-    background: var(--accent-dark);
-    transform: translateY(-2px);
-}
-
-.dashboard-preview {
-    background: #f8f9fa;
-    border-radius: 12px;
-    padding: 2rem;
-    margin: 2rem 0;
-}
-
-.sales-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.metric {
-    text-align: center;
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.metric h4 {
-    color: var(--secondary-color);
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.metric .value {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin: 0.5rem 0;
-}
-
-.metric .change {
-    color: #28a745;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.tableau-embed {
-    margin-top: 2rem;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-@media (max-width: 768px) {
-    .project-header {
-        flex-direction: column;
-    }
-
-    .project-info {
-        order: 2;
-    }
-
-    .project-logo {
-        order: 1;
-        width: 150px;
-        height: 150px;
-        min-width: 150px;
-        max-width: 150px;
-        margin: 0 auto 1.5rem auto;
-    }
-
-    .sales-metrics {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title {
-        font-size: 2.8rem;
-        margin: 0 auto 1rem;
-    }
-
-    .projects-section {
-        padding: 5rem 1rem 3rem;
-    }
-}
-</style>
-{% endblock %} 
+{% endblock %}

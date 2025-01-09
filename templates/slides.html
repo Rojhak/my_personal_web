@@ -1,370 +1,148 @@
 {% extends "base.html" %}
-
 {% block content %}
-<section class="slides-section">
-    <h2 class="section-title">Project Presentations</h2>
-    <p class="section-subtitle">Collection of detailed project presentations and technical documentation</p>
+<section class="slides-section" 
+         style="max-width:1200px; margin:5rem auto 0; padding:3rem 1rem;">
+    <!-- margin:5rem auto 0 moves it 5rem down from the top -->
+
+    <h2 class="section-title" style="text-align:center; margin-bottom:2rem;">
+        {{ data.slides_page.title }}
+    </h2>
     
-    <div id="selected-presentation" style="display: none;" class="presentation-viewer">
-        <div class="pdf-viewer">
+    <p class="section-subtitle" style="text-align:center; color:#7f8c8d; margin-bottom:3rem;">
+        {{ data.slides_page.subtitle }}
+    </p>
+    
+    <!-- PDF Viewer container (hidden by default) -->
+    <div id="selected-presentation" 
+         style="display:none; margin-bottom:2rem;" 
+         class="presentation-viewer">
+        <div class="pdf-viewer" 
+             style="width:100%; height:600px; border:1px solid #ccc; border-radius:8px;">
             <iframe id="pdf-frame" src="" width="100%" height="100%" frameborder="0"></iframe>
         </div>
     </div>
 
-    <div class="slides-grid">
+    <!-- Slides Grid -->
+    <div class="slides-grid" 
+         style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:2rem;">
         {% for slide in slides %}
-        <div class="slide-card">
-            <div class="slide-header">
-                <h3 class="slide-title">{{ slide.name }}</h3>
+        <div class="slide-card" 
+             style="background:white; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);
+                    overflow:hidden; transition:transform 0.3s ease;">
+            
+            <!-- Slide Header -->
+            <div class="slide-header" 
+                 style="background:#2c3e50; padding:1rem; text-align:center;">
+                <h3 class="slide-title" style="color:white; margin:0; font-size:1.2rem;">
+                    {{ slide.name }}
+                </h3>
             </div>
-            <div class="slide-image">
+
+            <!-- Slide Image -->
+            <div class="slide-image" style="width:100%; height:125px; overflow:hidden; background:#f0f6ff;">
                 {% if 'customer' in slide.name|lower %}
-                <img src="{{ url_for('static', filename='images/cluster.png') }}" alt="{{ slide.name }}">
+                <img src="{{ url_for('static', filename='images/cluster.png') }}" 
+                     alt="{{ slide.name }}" 
+                     style="width:100%; height:auto; object-fit:cover;">
                 {% elif 'bike' in slide.name|lower %}
-                <img src="{{ url_for('static', filename='images/bike.png') }}" alt="{{ slide.name }}">
+                <img src="{{ url_for('static', filename='images/bike.png') }}" 
+                     alt="{{ slide.name }}" 
+                     style="width:100%; height:auto; object-fit:cover;">
                 {% elif 'wine' in slide.name|lower %}
-                <img src="{{ url_for('static', filename='images/wine.png') }}" alt="{{ slide.name }}">
+                <img src="{{ url_for('static', filename='images/wine.png') }}" 
+                     alt="{{ slide.name }}" 
+                     style="width:100%; height:auto; object-fit:cover;">
+                {% else %}
+                <!-- fallback image -->
+                <img src="{{ url_for('static', filename='images/placeholder.png') }}" 
+                     alt="{{ slide.name }}" 
+                     style="width:100%; height:auto; object-fit:cover;">
                 {% endif %}
             </div>
-            <div class="slide-content">
+
+            <!-- Slide Content -->
+            <div class="slide-content" style="padding:1.5rem;">
+                <!-- Example: If it's “customer,” show special text from JSON -->
                 {% if 'customer' in slide.name|lower %}
-                <p>Segmented customers into three clusters based on spending patterns, frequency, and customer lifetime value (CLV). Developed actionable insights to improve engagement, loyalty, and profitability.</p>
-                <div class="slide-features">
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Data Preprocessing: Cleaning and handling missing values</span>
+                <p style="font-size:0.95rem; color:#555; margin-bottom:1.5rem;">
+                    {{ data.slides_page.customer_text.description }}
+                </p>
+                <div class="slide-features" style="display:flex; flex-direction:column; gap:0.5rem;">
+                    {% for feat in data.slides_page.customer_text.features %}
+                    <div class="feature-item" style="display:flex; align-items:center; gap:0.5rem;">
+                        <i class="fas fa-check" style="color:#4CAF50;"></i>
+                        <span style="font-size:0.9rem; color:#444;">{{ feat }}</span>
                     </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Clustering Method: Applied K-Means clustering</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Validation: Used silhouette scores to validate clusters</span>
-                    </div>
+                    {% endfor %}
                 </div>
+
                 {% elif 'bike' in slide.name|lower %}
-                <p>Analyzed ride data from Metro DC Bikeshare to identify patterns and optimize bike availability. Developed predictive models for station fullness and user satisfaction strategies.</p>
-                <div class="slide-features">
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Seasonal Trends: Analyzed weekday, weekend, and seasonal variations</span>
+                <p style="font-size:0.95rem; color:#555; margin-bottom:1.5rem;">
+                    {{ data.slides_page.bike_text.description }}
+                </p>
+                <div class="slide-features" style="display:flex; flex-direction:column; gap:0.5rem;">
+                    {% for feat in data.slides_page.bike_text.features %}
+                    <div class="feature-item" style="display:flex; align-items:center; gap:0.5rem;">
+                        <i class="fas fa-check" style="color:#4CAF50;"></i>
+                        <span style="font-size:0.9rem; color:#444;">{{ feat }}</span>
                     </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Predictive Modeling: Created polynomial regression models for station demand</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Casual vs. Member Users: Explored usage behavior and ride durations</span>
-                    </div>
+                    {% endfor %}
                 </div>
+
                 {% elif 'wine' in slide.name|lower %}
-                <p>Leveraged data analytics to determine factors affecting wine quality. Built predictive models to assist in pricing and production strategies for red and white wines.</p>
-                <div class="slide-features">
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Data Analysis: Compared red and white wine characteristics</span>
+                <p style="font-size:0.95rem; color:#555; margin-bottom:1.5rem;">
+                    {{ data.slides_page.wine_text.description }}
+                </p>
+                <div class="slide-features" style="display:flex; flex-direction:column; gap:0.5rem;">
+                    {% for feat in data.slides_page.wine_text.features %}
+                    <div class="feature-item" style="display:flex; align-items:center; gap:0.5rem;">
+                        <i class="fas fa-check" style="color:#4CAF50;"></i>
+                        <span style="font-size:0.9rem; color:#444;">{{ feat }}</span>
                     </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Key Insights: Identified alcohol, volatile acidity, and sulphates as major quality indicators</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Predictive Models: Achieved 86% accuracy with Random Forest</span>
-                    </div>
+                    {% endfor %}
                 </div>
+
+                {% else %}
+                <!-- fallback if not bike/customer/wine -->
+                <p style="font-size:0.95rem; color:#555; margin-bottom:1.5rem;">
+                    (No special data for this slide.)
+                </p>
                 {% endif %}
-                <div class="slide-actions">
-                    <a href="{{ slide.url }}" class="slide-button" target="_blank">
-                        <i class="fas fa-file-pdf"></i>
-                        View Full Presentation
+
+                <!-- Action Button -->
+                <div class="slide-actions" style="text-align:center; margin-top:1.5rem;">
+                    <a href="{{ slide.url }}" class="slide-button" target="_blank" style="
+                        background: linear-gradient(135deg, #3498db, #2980b9);
+                        color:white; padding:0.8rem 1.2rem; border-radius:8px; text-decoration:none; font-weight:500;
+                        transition: all 0.3s ease;">
+                        <i class="fas fa-file-pdf" style="margin-right:0.5rem;"></i>
+                        {{ data.slides_page.view_presentation }}
                     </a>
                 </div>
             </div>
-        </div>
+        </div> <!-- end slide-card -->
         {% endfor %}
     </div>
 
-    <div class="presentation-controls">
-        <select id="presentation-select" class="slide-select">
-            <option value="" disabled selected>Select a presentation to view</option>
+    <!-- PDF selection dropdown -->
+    <div class="presentation-controls" 
+         style="background:white; margin:3rem auto; max-width:600px; padding:2rem; border-radius:12px; 
+                box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:center;">
+        
+        <select id="presentation-select" class="slide-select" style="
+            width:100%; padding:0.8rem; border:2px solid #3498db; border-radius:8px; font-size:1rem; color:#2c3e50; 
+            margin-bottom:1rem;">
+            <option value="" disabled selected>{{ data.slides_page.select_prompt }}</option>
             {% for slide in slides %}
             <option value="{{ slide.url }}">{{ slide.name }}</option>
             {% endfor %}
         </select>
+        
+        <p style="font-size:0.9rem; color:#7f8c8d;">
+            (Select a PDF to preview above)
+        </p>
     </div>
 </section>
-
-<style>
-body {
-    background: #f0f6ff;
-    min-height: 100vh;
-}
-
-.slides-section {
-    padding: 4rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    background: #f0f6ff;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 1rem;
-    position: relative;
-    padding-bottom: 1.5rem;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: var(--accent-color);
-}
-
-.section-subtitle {
-    text-align: center;
-    color: var(--secondary-color);
-    font-size: 1.2rem;
-    margin-bottom: 3rem;
-}
-
-.slides-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.slide-card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.slide-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.slide-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    padding: 1.5rem;
-    text-align: center;
-}
-
-.slide-title {
-    color: white;
-    font-size: 1.5rem;
-    margin: 0;
-    font-weight: 600;
-}
-
-.slide-image {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-}
-
-.slide-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.slide-content {
-    padding: 1.5rem;
-}
-
-.slide-content p {
-    color: var(--secondary-color);
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.slide-features {
-    margin: 2rem 0;
-}
-
-.feature-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 1rem;
-    border-radius: 8px;
-}
-
-.feature-item i {
-    color: #4CAF50;
-    margin-right: 1rem;
-    margin-top: 0.2rem;
-}
-
-.feature-item span {
-    color: var(--secondary-color);
-    font-size: 1rem;
-    line-height: 1.4;
-}
-
-.slide-actions {
-    text-align: center;
-    margin-top: 2rem;
-}
-
-.slide-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.slide-button:hover {
-    background: linear-gradient(135deg, var(--accent-dark), var(--accent-color));
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-
-.slide-button i {
-    margin-right: 0.8rem;
-}
-
-@media (max-width: 768px) {
-    .slides-section {
-        padding: 2rem 1rem;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .section-subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-    }
-
-    .slides-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .slide-title {
-        font-size: 1.3rem;
-    }
-
-    .slide-content p {
-        font-size: 1rem;
-    }
-
-    .feature-item {
-        padding: 0.8rem;
-    }
-
-    .feature-item span {
-        font-size: 0.95rem;
-    }
-
-    .slide-button {
-        padding: 0.8rem 1.5rem;
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-.presentation-controls {
-    max-width: 800px;
-    margin: 3rem auto;
-    padding: 2rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.slide-select {
-    width: 100%;
-    padding: 1rem;
-    border: 2px solid var(--accent-color);
-    border-radius: 8px;
-    font-size: 1.1rem;
-    color: var(--primary-color);
-    background-color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.slide-select:hover {
-    border-color: var(--accent-dark);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.slide-select:focus {
-    outline: none;
-    border-color: var(--accent-dark);
-    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
-}
-
-.presentation-viewer {
-    max-width: 1000px;
-    margin: 2rem auto;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    padding: 2rem;
-}
-
-.pdf-viewer {
-    width: 100%;
-    height: 600px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-@media (max-width: 768px) {
-    .presentation-controls {
-        margin: 2rem 1rem;
-        padding: 1rem;
-    }
-
-    .slide-select {
-        font-size: 1rem;
-        padding: 0.8rem;
-    }
-
-    .presentation-viewer {
-        margin: 1rem;
-        padding: 1rem;
-    }
-
-    .pdf-viewer {
-        height: 400px;
-    }
-}
-
-.metric {
-    background: rgba(255, 255, 255, 0.7);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -377,9 +155,10 @@ document.addEventListener('DOMContentLoaded', function() {
             pdfFrame.src = this.value;
             presentationViewer.style.display = 'block';
         } else {
+            pdfFrame.src = '';
             presentationViewer.style.display = 'none';
         }
     });
 });
 </script>
-{% endblock %} 
+{% endblock %}

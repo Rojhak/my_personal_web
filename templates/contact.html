@@ -1,36 +1,46 @@
-<div class="contact-section" id="contact">
-    <div class="contact-container">
-        <h2>Get in Touch</h2>
-        <div class="contact-content">
-            <div class="contact-info">
+{% extends "base.html" %}
+{% block content %}
+<div class="contact-section" id="contact" style="padding: 4rem;">
+    <div class="contact-container" style="max-width:1200px; margin:0 auto;">
+        <h2>{{ data.contact_page.get_in_touch }}</h2>
+        <div class="contact-content" style="display:grid; grid-template-columns:1fr 2fr; gap:3rem; margin-top:2rem;">
+            <div class="contact-info" style="display:flex; flex-direction:column; gap:1.5rem;">
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <a href="mailto:contact@fehmikatar.com">contact@fehmikatar.com</a>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-linkedin"></i>
-                    <a href="{{ data.social_links.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                    <a href="{{ data.social_links.linkedin }}" target="_blank" rel="noopener noreferrer">
+                        {{ data.contact_page.linkedin_profile }}
+                    </a>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-github"></i>
-                    <a href="{{ data.social_links.github }}" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+                    <a href="{{ data.social_links.github }}" target="_blank" rel="noopener noreferrer">
+                        {{ data.contact_page.github_profile }}
+                    </a>
                 </div>
             </div>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
+            
+            <form class="contact-form" id="contactForm" style="background:white; padding:2rem; border-radius:12px;">
+                <div class="form-group" style="margin-bottom:1.5rem;">
+                    <label for="name">{{ data.contact_page.form_name }}</label>
+                    <input type="text" id="name" name="name" required style="width:100%;padding:0.8rem;">
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                <div class="form-group" style="margin-bottom:1.5rem;">
+                    <label for="email">{{ data.contact_page.form_email }}</label>
+                    <input type="email" id="email" name="email" required style="width:100%;padding:0.8rem;">
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
+                <div class="form-group" style="margin-bottom:1.5rem;">
+                    <label for="message">{{ data.contact_page.form_message }}</label>
+                    <textarea id="message" name="message" rows="4" required style="width:100%;padding:0.8rem;"></textarea>
                 </div>
-                <button type="submit" class="submit-button">Send Message</button>
+                <button type="submit" class="submit-button" style="background:var(--accent-color);color:white;padding:1rem 2rem;border-radius:6px;">
+                    {{ data.contact_page.button_submit }}
+                </button>
             </form>
         </div>
     </div>
-</div> 
+</div>
+{% endblock %}

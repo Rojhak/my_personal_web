@@ -1,22 +1,21 @@
 {% extends "base.html" %}
-
 {% block content %}
 <div class="dashboard-container">
     <div class="dashboard-header">
-        <h1>Sales Analytics Dashboard</h1>
+        <h1>{{ data.dashboard_page.title }}</h1>
         <div class="dashboard-filters">
             <select id="timeRange">
-                <option value="daily">Daily</option>
-                <option value="weekly">Weekly</option>
-                <option value="monthly">Monthly</option>
+                {% for opt in data.dashboard_page.time_range_options %}
+                <option value="{{ opt|lower }}">{{ opt }}</option>
+                {% endfor %}
             </select>
         </div>
     </div>
     
     <div class="dashboard-grid">
-        <!-- Key Metrics -->
+        <!-- Key Metric -->
         <div class="metric-card">
-            <h3>Total Sales</h3>
+            <h3>{{ data.dashboard_page.key_metric_total_sales }}</h3>
             <div class="metric-value">€{{ total_sales }}</div>
             <div class="metric-trend up">
                 <i class="fas fa-arrow-up"></i> 12%
@@ -29,7 +28,6 @@
     </div>
 </div>
 
-<!-- Add Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
-{% endblock %} 
+{% endblock %}

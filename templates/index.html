@@ -1,109 +1,124 @@
 {% extends "base.html" %}
-
 {% block content %}
-<main>
-    <div class="hero-container" style="margin-top: 4rem;">
-        <!-- First Row: Title and Photo -->
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
-            <div class="hero-header">
-                <div class="title-section">
-                    <h1 class="headline">Numbers with Heart:<br>My Journey from Actuarial Tables<br>to Social Impact.</h1>
-                </div>
-                <div class="profile-image" style="margin-top: 3.5rem; width: 160px; height: 160px;">
-                    <img src="{{ url_for('static', filename='images/my.jpg') }}" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
+<main style="margin-top:5rem;"> 
+    <!-- Extra margin so content doesn’t overlap the header -->
+    <div class="hero-container" style="max-width:1200px; margin:0 auto; padding:0 2rem;">
+        
+        <!-- Title and Photo Row -->
+        <div class="hero-header"
+             style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:2rem;">
+            
+            <div class="title-section" style="flex:1; min-width:280px;">
+                <h1 class="headline" style="white-space:pre-line; font-size:2.5rem; margin-bottom:1rem;">
+                    {{ data.index_page.headline|safe }}
+                </h1>
+            </div>
+            
+            <!-- Profile Photo, slightly lower with margin-top -->
+            <div class="profile-image"
+                 style="margin-top:2rem; width:180px; height:180px; border-radius:50%; overflow:hidden;">
+                <img src="{{ url_for('static', filename='images/my.jpg') }}"
+                     alt="Profile Picture"
+                     style="width:100%; height:100%; object-fit:cover;">
             </div>
         </div>
 
-        <!-- Second Row: Graph and Text -->
-        <div style="max-width: 1200px; margin: 2rem auto 0; padding: 0 2rem;">
-            <div style="display: grid; grid-template-columns: 300px 1fr; gap: 2rem; align-items: center;">
-                <div class="network-graph network-graph-transparent" style="margin-top: -1rem;"></div>
-                <p class="subheadline">I've always seen data as more than numbers—it's a lens through which I understand the world, from analyzing client cases to building innovative solutions. In my social work, I handled thousands of cases, retrieving critical information to align with legal rights and uncovering patterns that informed strategic decisions. I created databases to track court decisions and client trends, transforming raw data into actionable insights through visual storytelling with Tableau.<br><br>My passion for data led me to deepen my skills through self-learning and immersive programs at 42 Berlin and Code Academy, where I mastered Python, SQL, and machine learning. From building e-commerce dashboards to fine-tuning NLP models for parliamentary analysis, I've tackled diverse challenges that combine technical expertise with creative problem-solving.<br><br>For me, data is a bridge between insight and action—a way to empower decisions and drive meaningful impact. If your team values curiosity, expertise, and a commitment to making a difference, let's work together.</p>
+        <!-- Graph + Paragraphs Row -->
+        <div style="display:grid; grid-template-columns:200px 1fr; gap:2rem; margin-top:2rem; align-items:start;">
+            <!-- Smaller Graph Container -->
+            <div class="network-graph network-graph-transparent" style="width:200px; height:200px;"></div>
+            
+            <!-- Multiple paragraphs (p1, p2, p3) with highlight already in JSON -->
+            <div style="line-height:1.6; color:#444;">
+                <p style="margin-bottom:1rem;">{{ data.index_page.p1|safe }}</p>
+                <p style="margin-bottom:1rem;">{{ data.index_page.p2|safe }}</p>
+                <p style="margin-bottom:1rem;">{{ data.index_page.p3|safe }}</p>
             </div>
         </div>
     </div>
 </main>
 
-<div class="action-buttons-container">
-    <div class="action-buttons">
+<!-- CTA Buttons Section -->
+<div class="action-buttons-container" style="text-align:center; margin:2rem 0;">
+    <div class="action-buttons" style="display:inline-flex; gap:1rem;">
         <a href="/static/files/resume.pdf" class="cta-button primary" download>
             <div class="cta-content">
                 <i class="fas fa-download"></i>
-                <span>Resume</span>
+                <span>{{ data.index_page.resume_button }}</span>
             </div>
         </a>
         <a href="{{ url_for('about', lang=lang) }}" class="cta-button secondary">
             <div class="cta-content">
                 <i class="fas fa-user-circle"></i>
-                <span>About Me</span>
+                <span>{{ data.index_page.about_button }}</span>
             </div>
         </a>
         <a href="{{ url_for('projects', lang=lang) }}" class="cta-button secondary">
             <div class="cta-content">
                 <i class="fas fa-project-diagram"></i>
-                <span>Projects</span>
+                <span>{{ data.index_page.projects_button }}</span>
             </div>
         </a>
         <a href="mailto:fehmi.katar@gmail.com" class="cta-button tertiary">
             <div class="cta-content">
                 <i class="fas fa-envelope"></i>
-                <span>Contact</span>
+                <span>{{ data.index_page.contact_button }}</span>
             </div>
         </a>
     </div>
 </div>
 
+<!-- Include D3.js for the smaller network graph -->
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script>
-// Add simple network visualization using D3.js
-const createNetworkGraph = () => {
-    const width = 300;
-    const height = 300;
+function createNetworkGraph() {
+  // Smaller width/height so it’s visible at a glance
+  const width = 200;
+  const height = 200;
+  
+  const svg = d3.select('.network-graph')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height);
+  
+  // Fewer nodes for a simpler graph
+  const nodes = Array.from({length: 8}, (_, i) => ({id: i}));
+  const links = nodes.slice(1).map(n => ({
+    source: Math.floor(Math.random() * n.id),
+    target: n.id
+  }));
+  
+  const simulation = d3.forceSimulation(nodes)
+    .force('link', d3.forceLink(links).distance(35))
+    .force('charge', d3.forceManyBody().strength(-25))
+    .force('center', d3.forceCenter(width / 2, height / 2));
+  
+  const link = svg.append('g')
+    .selectAll('line')
+    .data(links)
+    .join('line')
+    .style('stroke', '#ccc')
+    .style('stroke-opacity', 0.7);
+  
+  const node = svg.append('g')
+    .selectAll('circle')
+    .data(nodes)
+    .join('circle')
+    .attr('r', 4)
+    .style('fill', '#3498db');
+  
+  simulation.on('tick', () => {
+    link
+      .attr('x1', d => d.source.x)
+      .attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x)
+      .attr('y2', d => d.target.y);
     
-    const svg = d3.select('.network-graph')
-        .append('svg')
-        .attr('width', width)
-        .attr('height', height);
-    
-    // Create nodes and links for visualization
-    const nodes = Array.from({length: 12}, (_, i) => ({id: i}));
-    const links = nodes.slice(1).map(n => ({
-        source: Math.floor(Math.random() * n.id),
-        target: n.id
-    }));
-    
-    const simulation = d3.forceSimulation(nodes)
-        .force('link', d3.forceLink(links))
-        .force('charge', d3.forceManyBody().strength(-30))
-        .force('center', d3.forceCenter(width / 2, height / 2));
-    
-    const link = svg.append('g')
-        .selectAll('line')
-        .data(links)
-        .join('line')
-        .style('stroke', '#ddd')
-        .style('stroke-opacity', 0.6);
-    
-    const node = svg.append('g')
-        .selectAll('circle')
-        .data(nodes)
-        .join('circle')
-        .attr('r', 3)
-        .style('fill', '#007bff');
-    
-    simulation.on('tick', () => {
-        link
-            .attr('x1', d => d.source.x)
-            .attr('y1', d => d.source.y)
-            .attr('x2', d => d.target.x)
-            .attr('y2', d => d.target.y);
-        
-        node
-            .attr('cx', d => d.x)
-            .attr('cy', d => d.y);
-    });
-};
+    node
+      .attr('cx', d => d.x)
+      .attr('cy', d => d.y);
+  });
+}
 
 document.addEventListener('DOMContentLoaded', createNetworkGraph);
 </script>
