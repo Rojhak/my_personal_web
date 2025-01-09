@@ -1,4 +1,4 @@
-
+Here’s the updated version of your `README.md` with LinkedIn, GitHub, and email icons included:
 
 ```markdown
 # Personal Portfolio Website
@@ -142,14 +142,15 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 **Fehmi Katar**
 
-- LinkedIn: [Fehmi Katar](https://www.linkedin.com/in/fehmi-dataanalyst)
-- GitHub: [Rojhak](https://github.com/Rojhak)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Fehmi%20Katar-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/fehmi-dataanalyst)
+[![GitHub](https://img.shields.io/badge/GitHub-Rojhak-black?style=flat-square&logo=github)](https://github.com/Rojhak)
+[![Email](https://img.shields.io/badge/Email-katar.fhm%40gmail.com-red?style=flat-square&logo=gmail)](mailto:katar.fhm@gmail.com)
 
 ---
 
 ## 🙏 Acknowledgments
 
-Thanks to the open-source community for providing incredible tools and libraries.
+- Thanks to the open-source community for providing incredible tools and libraries.
 
 ---
 
