@@ -1,6 +1,4 @@
-Here’s the updated version of your `README.md` with LinkedIn, GitHub, and email icons included:
 
-```markdown
 # Personal Portfolio Website
 
 A modern, responsive portfolio website built with Flask, featuring bilingual functionality (English/German), interactive project showcases, and a dynamic dashboard.
@@ -9,9 +7,9 @@ A modern, responsive portfolio website built with Flask, featuring bilingual fun
 
 ## 🌟 Features
 
- **Bilingual Support**: Full English and German language options
-**Responsive Design**: Optimized for all devices, from desktops to mobile
-**Interactive Sections**:
+- **Bilingual Support**: Full English and German language options
+- **Responsive Design**: Optimized for all devices, from desktops to mobile
+- **Interactive Sections**:
   - 📊 Project Portfolio with live demos
   - 📑 PDF Presentation Viewer
   - 📈 Interactive Tableau Dashboard
@@ -22,12 +20,12 @@ A modern, responsive portfolio website built with Flask, featuring bilingual fun
 
 ## 🛠️ Tech Stack
 
-**Backend**: Python (Flask)
- **Frontend**: HTML5, CSS3, JavaScript
-**Database**: PostgreSQL
-**Visualization**: Tableau
- **Deployment**: Heroku
- **Version Control**: Git
+- **Backend**: Python (Flask)  
+- **Frontend**: HTML5, CSS3, JavaScript  
+- **Database**: PostgreSQL  
+- **Visualization**: Tableau  
+- **Deployment**: Heroku  
+- **Version Control**: Git  
 
 ---
 
@@ -45,7 +43,7 @@ A modern, responsive portfolio website built with Flask, featuring bilingual fun
    ```bash
    git clone https://github.com/Rojhak/my_personal_web.git
    cd my_personal_web
-   ```
+
 
 2. **Create and activate a virtual environment**:
    ```bash
@@ -153,4 +151,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 - Thanks to the open-source community for providing incredible tools and libraries.
 ---
 Feel free to suggest further enhancements or share feedback!
-```
+
