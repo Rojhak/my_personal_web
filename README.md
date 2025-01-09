@@ -148,9 +148,10 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 ---
 
 ## 🙏 Acknowledgments
-```
-- Thanks to the open-source community for providing incredible tools and libraries.
+
+Thanks to the open-source community for providing incredible tools and libraries.
 
 ---
 
 Feel free to suggest further enhancements or share feedback!
+```
