@@ -2,8 +2,13 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 import json
 import os
 import socket
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default-secret-key')
 
 def find_free_port(start_port=5001):
     """Find a free port starting from start_port."""
