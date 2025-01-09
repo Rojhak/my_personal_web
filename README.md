@@ -1,4 +1,4 @@
-cat > README.md << 'EOL'
+ README.md
 # Personal Portfolio Website
 
 A modern, responsive portfolio website built with Flask, featuring a bilingual interface (English/German), interactive project showcases, and a dynamic dashboard.
