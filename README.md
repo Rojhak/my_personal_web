@@ -9,9 +9,9 @@ A modern, responsive portfolio website built with Flask, featuring bilingual fun
 
 ## 🌟 Features
 
-- **Bilingual Support**: Full English and German language options
-- **Responsive Design**: Optimized for all devices, from desktops to mobile
-- **Interactive Sections**:
+ **Bilingual Support**: Full English and German language options
+**Responsive Design**: Optimized for all devices, from desktops to mobile
+**Interactive Sections**:
   - 📊 Project Portfolio with live demos
   - 📑 PDF Presentation Viewer
   - 📈 Interactive Tableau Dashboard
@@ -22,12 +22,12 @@ A modern, responsive portfolio website built with Flask, featuring bilingual fun
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Python (Flask)
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Database**: PostgreSQL
-- **Visualization**: Tableau
-- **Deployment**: Heroku
-- **Version Control**: Git
+**Backend**: Python (Flask)
+ **Frontend**: HTML5, CSS3, JavaScript
+**Database**: PostgreSQL
+**Visualization**: Tableau
+ **Deployment**: Heroku
+ **Version Control**: Git
 
 ---
 
@@ -151,8 +151,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 ## 🙏 Acknowledgments
 
 - Thanks to the open-source community for providing incredible tools and libraries.
-
 ---
-
 Feel free to suggest further enhancements or share feedback!
 ```
