@@ -93,6 +93,15 @@ def serve_slides(filename):
     except Exception as e:
         return f"Error serving file: {str(e)}", 500
 
+@app.route('/resumes/<path:filename>')
+def serve_resume(filename):
+    """Serve resume files from the resumes folder."""
+    try:
+        resumes_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resumes')
+        return send_from_directory(resumes_dir, filename)
+    except Exception as e:
+        return f"Error serving file: {str(e)}", 500
+
 # If you have a schedule page:
 @app.route('/<lang>/schedule')
 @app.route('/schedule', defaults={'lang': 'en'})

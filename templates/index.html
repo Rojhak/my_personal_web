@@ -41,7 +41,11 @@
 <!-- CTA Buttons Section -->
 <div class="action-buttons-container" style="text-align:center; margin:2rem 0;">
     <div class="action-buttons" style="display:inline-flex; gap:1rem;">
-        <a href="/static/files/resume.pdf" class="cta-button primary" download>
+        {% if lang == 'en' %}
+            <a href="{{ url_for('serve_resume', filename='en_res.pdf') }}" class="cta-button primary" download>
+        {% else %}
+            <a href="{{ url_for('serve_resume', filename='de_res.pdf') }}" class="cta-button primary" download>
+        {% endif %}
             <div class="cta-content">
                 <i class="fas fa-download"></i>
                 <span>{{ data.index_page.resume_button }}</span>

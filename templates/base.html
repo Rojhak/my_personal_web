@@ -2,7 +2,7 @@
 <html lang="{{ lang }}">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Fehmi Katar - Data Analyst</title>
   <meta name="description" content="Data Analyst combining actuarial expertise with AI tools to deliver impactful solutions. Expertise in Python, SQL, and machine learning.">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -16,6 +16,7 @@
       --accent-color: #3498db;
       --accent-light: #ebf5ff;
       --accent-dark: #217dbb;
+      --nav-height: 70px;
     }
     body {
       margin: 0; 
@@ -23,12 +24,14 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       color: var(--primary-color);
       background-color: var(--background-color);
+      padding-top: var(--nav-height);
     }
     .sticky-nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
+      height: var(--nav-height);
       background: rgba(255, 255, 255, 0.95);
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       z-index: 1000;
@@ -36,8 +39,9 @@
     }
     .nav-container {
       max-width: 1200px;
+      height: 100%;
       margin: 0 auto;
-      padding: 0.8rem 2rem;
+      padding: 0 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -49,8 +53,8 @@
       text-decoration: none;
     }
     .header-logo {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       object-fit: contain;
     }
     .logo-text .name {
@@ -72,6 +76,7 @@
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s ease;
+      padding: 0.5rem;
     }
     .nav-link:hover {
       color: var(--accent-color);
@@ -89,15 +94,74 @@
       text-decoration: none;
       font-size: 0.9rem;
       transition: color 0.3s ease;
+      padding: 0.5rem;
     }
     .language-switch a.active {
       color: var(--accent-color);
       font-weight: 600;
     }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 10;
+    }
+    .menu-toggle span {
+      width: 100%;
+      height: 3px;
+      background: var(--primary-color);
+      border-radius: 10px;
+      transition: all 0.3s linear;
+      position: relative;
+      transform-origin: 1px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      .nav-links {
+        position: fixed;
+        top: var(--nav-height);
+        right: -100%;
+        height: calc(100vh - var(--nav-height));
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 2rem;
+        transition: right 0.3s ease-in-out;
+        gap: 1.5rem;
+      }
+      .nav-links.active {
+        right: 0;
+      }
+      .language-switch {
+        margin: 0;
+        padding: 1rem 0;
+        border-left: none;
+        border-top: 1px solid #eee;
+      }
+      .nav-link {
+        font-size: 1.2rem;
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+      }
+      main {
+        padding: 0 1rem;
+      }
+    }
+
     .site-footer {
       background: var(--background-color);
       border-top: 1px solid var(--accent-light);
-      padding: 1.5rem 0;
+      padding: 1.5rem;
       margin-top: 2rem;
       text-align: center;
     }
@@ -112,28 +176,11 @@
       font-size: 1.2rem;
       opacity: 0.8;
       transition: all 0.3s ease;
+      padding: 0.5rem;
     }
     .footer-social a:hover {
       opacity: 1;
       transform: translateY(-2px);
-    }
-    @media (max-width: 768px) {
-      .nav-container {
-        padding: 0.8rem 1rem;
-      }
-      .header-logo {
-        width: 40px;
-        height: 40px;
-      }
-      .logo-text .name {
-        font-size: 1rem;
-      }
-      .logo-text .title {
-        font-size: 0.8rem;
-      }
-      .nav-links {
-        gap: 1rem;
-      }
     }
   </style>
 </head>
@@ -149,6 +196,11 @@
           </div>
         </a>
       </div>
+      <button class="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <div class="nav-links">
         <a href="{{ url_for('index', lang=lang) }}" class="nav-link">{{ data.nav.home }}</a>
         <a href="{{ url_for('projects', lang=lang) }}" class="nav-link">{{ data.nav.projects }}</a>
@@ -177,5 +229,56 @@
     </div>
     <div>© 2024 Fehmi Katar. All rights reserved.</div>
   </footer>
+
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+      const spans = this.querySelectorAll('span');
+      spans[0].style.transform = this.classList.contains('active') ? 'rotate(45deg)' : 'rotate(0)';
+      spans[1].style.opacity = this.classList.contains('active') ? '0' : '1';
+      spans[2].style.transform = this.classList.contains('active') ? 'rotate(-45deg)' : 'rotate(0)';
+      this.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const navLinks = document.querySelector('.nav-links');
+      const menuToggle = document.querySelector('.menu-toggle');
+      if (!navLinks.contains(event.target) && !menuToggle.contains(event.target) && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+      }
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('active');
+        document.querySelector('.menu-toggle').classList.remove('active');
+      });
+    });
+
+    // Back to Top Button
+    const backToTopButton = document.querySelector('.back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
 </body>
 </html>
